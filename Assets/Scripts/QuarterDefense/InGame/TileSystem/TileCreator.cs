@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using QuarterDefense.Common;
 
 namespace QuarterDefense.InGame
 {
@@ -9,7 +10,6 @@ namespace QuarterDefense.InGame
     
     public class TileCreator : MonoBehaviour
     {
-        private const int TileCount = 9;
         private const float Half = 0.5f;
         
         public event TileHandler OnTileCreated = delegate(List<Tile> list) {  };
@@ -19,14 +19,14 @@ namespace QuarterDefense.InGame
         public void CreateTile()
         {
             // Tile의 중앙 값에 맞춰 Offset 조절.
-            float offset = (TileCount - 1) * Half;
+            float offset = (Constants.TileLength - 1) * Half;
 
             // Tile List 생성.
             List<Tile> tileList = new List<Tile>();
             
-            for (int i = 0; i < TileCount; i++)
+            for (int i = 0; i < Constants.TileLength; i++)
             {
-                for (int j = 0; j < TileCount; j++)
+                for (int j = 0; j < Constants.TileLength; j++)
                 {
                     Tile newTile = Instantiate(tilePrefab, gameObject.transform, true);
                     

@@ -1341,6 +1341,7 @@ GameObject:
   - component: {fileID: 1681591456}
   - component: {fileID: 1681591457}
   - component: {fileID: 1681591455}
+  - component: {fileID: 1681591459}
   - component: {fileID: 1681591458}
   m_Layer: 0
   m_Name: Tile Manager
@@ -1390,6 +1391,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileCreator: {fileID: 1681591455}
+  tileSetter: {fileID: 1681591459}
   tileStartEffect: {fileID: 1681591458}
 --- !u!114 &1681591458
 MonoBehaviour:
@@ -1401,6 +1403,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 963900c710b51794bbbe37809699927a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1681591459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1681591454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc4fe890820de654aaa5a731df1317c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1739097082
