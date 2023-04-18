@@ -4,6 +4,8 @@ namespace QuarterDefense.Common
     {
         public const int TileLength = 9;
         public const int MaxTileCount = TileLength * TileLength;
+
+        public const string TilePrefabPath = "Tile";
     }
 }
 

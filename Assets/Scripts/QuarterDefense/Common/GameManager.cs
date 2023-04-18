@@ -13,6 +13,10 @@ namespace QuarterDefense.Common
             
             Application.targetFrameRate = 60;
             
+            #elif UNITY_EDITOR
+            
+            Application.targetFrameRate = -1;
+            
             #endif
 
             QualitySettings.vSyncCount = 1;
