@@ -14,7 +14,7 @@ namespace QuarterDefense.Common
             QualitySettings.vSyncCount = 1;
             
 #if UNITY_ANDROID
-            Application.targetFrameRate = 60;
+            Application.targetFrameRate = 120;
             Screen.sleepTimeout = SleepTimeout.NeverSleep;
 #else
             Application.targetFrameRate = -1;
