@@ -13,17 +13,12 @@ namespace QuarterDefense.Common
         {
             QualitySettings.vSyncCount = 1;
             
-            #if UNITY_ANDROID
-            
+#if UNITY_ANDROID
             Application.targetFrameRate = 60;
-            
-            #else
-            
+            Screen.sleepTimeout = SleepTimeout.NeverSleep;
+#else
             Application.targetFrameRate = -1;
-            
-            #endif
-
-            
+#endif
         }
     }
 }
