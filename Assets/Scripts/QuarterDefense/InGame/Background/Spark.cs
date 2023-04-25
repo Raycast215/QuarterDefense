@@ -4,8 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace QuarterDefense.InGame
+namespace QuarterDefense.InGame.Background
 {
+    // Scripted by Raycast
+    // 2023.04.26
+    // 인게임 배경 연출용 반짝이 클래스입니다.
+    
     public class Spark : MonoBehaviour
     {
         private const float MaxWidth = 25.0f;
