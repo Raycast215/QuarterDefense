@@ -23,6 +23,7 @@ namespace QuarterDefense.InGame.TileSystem
             new Vector2(1,4), new Vector2(4,1),
             new Vector2(2,4), new Vector2(4,2),
             new Vector2(3,4), new Vector2(4,3),
+            new Vector2(4,4),
             new Vector2(5,4), new Vector2(4,5),
             new Vector2(6,4), new Vector2(4,6),
             new Vector2(7,4), new Vector2(4,7),
@@ -55,8 +56,7 @@ namespace QuarterDefense.InGame.TileSystem
                     Tile newTile = Instantiate(tilePrefab, gameObject.transform, true);
                     
                     newTile.transform.position = new Vector3(i - offset, -Half, j - offset);
-                    newTile.gameObject.SetActive(false);
-                    
+
                     tileList.Add(newTile);
                 }
             }

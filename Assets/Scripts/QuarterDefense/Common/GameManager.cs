@@ -7,19 +7,23 @@ namespace QuarterDefense.Common
 {
     public class GameManager : MonoBehaviour
     {
+        [SerializeField] private bool isDebugMode = false;
+        
         private void Awake()
         {
+            QualitySettings.vSyncCount = 1;
+            
             #if UNITY_ANDROID
             
             Application.targetFrameRate = 60;
             
-            #elif UNITY_EDITOR
+            #else
             
             Application.targetFrameRate = -1;
             
             #endif
 
-            QualitySettings.vSyncCount = 1;
+            
         }
     }
 }

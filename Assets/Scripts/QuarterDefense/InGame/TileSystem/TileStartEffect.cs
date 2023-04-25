@@ -15,7 +15,7 @@ namespace QuarterDefense.InGame.TileSystem
     {
         private const string StartClip = "Tile Start Effect";
         private const float StartDelayTime = 1.0f;
-        private const float TileDelayTime = 0.005f;
+        private const float TileDelayTime = 0.01f;
 
         private bool _isStart = false;
         
@@ -48,7 +48,7 @@ namespace QuarterDefense.InGame.TileSystem
             while (true)
             {
                 if (_randomIndexList.Count <= 0) yield break;
-                
+
                 int randomIndex = Random.Range(0, _randomIndexList.Count);
                 
                 TileEffect(toList[_randomIndexList[randomIndex]]);
@@ -61,7 +61,6 @@ namespace QuarterDefense.InGame.TileSystem
         
         private void TileEffect(Tile toTile)
         {
-            toTile.gameObject.SetActive(true);
             toTile.TileAnimator.Play(StartClip, 0, 0.0f);
         }
     }
