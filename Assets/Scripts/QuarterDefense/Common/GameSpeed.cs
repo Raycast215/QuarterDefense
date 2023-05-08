@@ -22,6 +22,7 @@ namespace QuarterDefense.Common
 
             SetIcon();
 
+            // Game Speed 저장.
             Time.timeScale = gameSpeed;
            
             // Debug.Log($"Game Speed : {gameSpeed}");
