@@ -7,7 +7,7 @@ namespace QuarterDefense.Common
 {
     public class GameManager : MonoBehaviour
     {
-        [SerializeField] private bool isDebugMode = false;
+        //[SerializeField] private bool isDebugMode = false;
         
         private void Awake()
         {
