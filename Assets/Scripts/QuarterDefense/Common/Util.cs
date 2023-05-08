@@ -1,3 +1,6 @@
+using UnityEngine;
+using UnityEngine.UI;
+
 namespace QuarterDefense.Common
 {
     public static class Util
@@ -18,6 +21,18 @@ namespace QuarterDefense.Common
             if (value < min) value = max;
 
             return value;
+        }
+
+        /// <summary>
+        /// 받아온 Text의 text 사이즈만큼 Text의 Rect사이즈를 변경하는 함수.
+        /// </summary>
+        /// <param name="targetText"></param>
+        public static void SetTextRect(Text targetText)
+        {
+            float textWidth = targetText.preferredWidth;
+            float rectHeight = targetText.rectTransform.sizeDelta.y;
+
+            targetText.rectTransform.sizeDelta = new Vector2(textWidth, rectHeight);
         }
     }
 }
