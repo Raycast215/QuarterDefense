@@ -25,12 +25,18 @@ namespace QuarterDefense.InGame.Enemy
             MoveToTarget();
         }
 
+        /// <summary>
+        /// 타겟의 방향에 따라 회전합니다.
+        /// </summary>
         private void RotateTowardsTarget()
         {
             float angle = Mathf.Atan2(GetDistanceToTarget().y, GetDistanceToTarget().x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
 
+        /// <summary>
+        /// 타겟과의 최소 거리까지 이동시킵니다.
+        /// </summary>
         private void MoveToTarget()
         {
             if(!CheckDistanceToTarget()) return;
