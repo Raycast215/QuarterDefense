@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -33,6 +34,19 @@ namespace QuarterDefense.Common
             float rectHeight = targetText.rectTransform.sizeDelta.y;
 
             targetText.rectTransform.sizeDelta = new Vector2(textWidth, rectHeight);
+        }
+        
+        /// <summary>
+        /// 현재 시간의 타임스탬프를 가져오는 함수.
+        /// </summary>
+        /// <returns></returns>
+        public static long GetTimeStamp()
+        {
+            var timeSpan = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0);
+
+            // Debug.Log((long)timeSpan.TotalSeconds);
+            
+            return (long)timeSpan.TotalSeconds;
         }
     }
 }
