@@ -12,8 +12,8 @@ namespace QuarterDefense.InGame.Background
     
     public class Spark : MonoBehaviour
     {
-        private const float MaxWidth = 40.0f;
-        private const float MaxHeight = 15.0f;
+        private const float MaxWidth = 100.0f;
+        private const float MaxHeight = 30.0f;
         private const float MinAnimationSpeed = 0.1f;
         
         [SerializeField] private SpriteRenderer spriteRenderer = null;
@@ -33,7 +33,7 @@ namespace QuarterDefense.InGame.Background
             float width = GetRandom(MaxWidth);
             float height = GetRandom(MaxHeight);
             
-            targetTransform.position = new Vector3(width, height, 0.0f);
+            targetTransform.position = new Vector3(width, height, targetTransform.position.z);
         }
         
         private float GetRandom(float targetNum)
