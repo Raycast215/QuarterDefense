@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,8 @@ namespace QuarterDefense.InGame
     {
         private const float CreateTime = 1.0f;
 
+        public event Action<List<Enemy>> OnEnemyListChanged = delegate(List<Enemy> list) {  };
+        
         [SerializeField] private int maxEnemyCount = 200;
         [SerializeField] private WayPoint wayPoint = null;
         
@@ -31,15 +34,25 @@ namespace QuarterDefense.InGame
             {
                 yield return new WaitForSeconds(CreateTime);
                 
-                Enemy instance = Instantiate(GetPrefabs(_enemyName), transform);
+                Enemy enemy = Instantiate(GetPrefabs(_enemyName), transform);
                 
-                instance.SetEnemy(wayPoint);
+                enemy.SetEnemy(wayPoint);
+                enemy.OnDestroyed += RemoveEnemy;
+                
+                _enemyList.Add(enemy);
+                
+                OnEnemyListChanged.Invoke(_enemyList);
             }
         }
         
         private Enemy GetPrefabs(string prefabName)
         {
             return Resources.Load<Enemy>($"Enemy/{prefabName}");
+        }
+
+        private void RemoveEnemy(Enemy enemy)
+        {
+            _enemyList.Remove(enemy);
         }
     }
 }

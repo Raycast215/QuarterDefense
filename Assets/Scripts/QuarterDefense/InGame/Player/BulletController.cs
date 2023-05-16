@@ -1,11 +1,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using QuarterDefense.InGame.Bullet;
+using QuarterDefense.InGame.Interface;
 using UnityEngine;
 
 namespace QuarterDefense.InGame.Player
 {
-    public class BulletController : MonoBehaviour
+    public class BulletController : MonoBehaviour, IAttackable
     {
         [SerializeField] private int maxCount = 32;
         [SerializeField] private BaseBullet bulletPrefab = null;
@@ -37,6 +38,16 @@ namespace QuarterDefense.InGame.Player
                 
                 _bulletList.Add(instance);
             }
+        }
+
+        public bool CheckAttackableState()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void Attack()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using QuarterDefense.Common;
 using UnityEngine;
@@ -7,6 +8,8 @@ namespace QuarterDefense.InGame
     public class Enemy : MonoBehaviour
     {
         private const float MinDistance = 1.0f;
+        
+        public event Action<Enemy> OnDestroyed = delegate(Enemy enemy) {  };
         
         [SerializeField] private float speed = 5.0f;
         [SerializeField] private Transform spriteTransform = null;
@@ -32,6 +35,23 @@ namespace QuarterDefense.InGame
             StartCoroutine(Move());
         }
 
+
+        private int _maxHp = 3;
+        private int _hp = 3;
+        public void Damage(int damage)
+        {
+            _hp -= damage;
+
+            float scale = (float)_hp / _maxHp;
+            transform.localScale = new Vector3(scale, scale, scale);
+
+            if (_hp <= 0)
+            {
+                OnDestroyed.Invoke(this);
+                Destroy(gameObject);
+            }
+        }
+        
         private IEnumerator Move()
         {
             while (true)

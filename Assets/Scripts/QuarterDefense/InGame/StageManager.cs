@@ -8,6 +8,7 @@ namespace QuarterDefense.InGame
 {
     public class StageManager : MonoBehaviour
     {
+        [SerializeField] private Player.Player player = null;
         [SerializeField] private WaveViewer waveViewer = null;
         [SerializeField] private EnemyManager enemyManager = null;
         
@@ -33,6 +34,13 @@ namespace QuarterDefense.InGame
             
             waveViewer.Set(1);
             StartCoroutine(OnCountdown());
+
+            NextState();
+        }
+
+        private void NextState()
+        {
+            enemyManager.OnEnemyListChanged += player.SetEnemyList;
         }
 
         private IEnumerator OnCountdown()
