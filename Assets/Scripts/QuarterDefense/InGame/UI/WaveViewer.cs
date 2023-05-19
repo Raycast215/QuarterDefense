@@ -11,13 +11,15 @@ namespace QuarterDefense.InGame.UI
     {
         [SerializeField] private Text waveText = null;
 
-        public int Wave { get; private set; } = 0;
-
+        private int _wave = 0;
+        
         public override void Set(int delta)
         {
-            Wave += delta;
+            _wave += delta;
             
-            waveText.text = $"Wave {Wave}";
+            waveText.text = $"Wave {_wave}";
+            
+            Debug.Log($"Start {_wave} Wave...!");
         }
     }
 }

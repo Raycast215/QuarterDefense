@@ -7,44 +7,45 @@ namespace QuarterDefense.InGame
 {
     public class EnemyManager : MonoBehaviour
     {
-        private const float CreateTime = 1.0f;
-
-        public event Action<List<Enemy>> OnEnemyListChanged = delegate(List<Enemy> list) {  };
+        private const float SpawnDelay = 1.0f;
+        private const float WaitPos = 999.0f;
         
         [SerializeField] private int maxEnemyCount = 200;
         [SerializeField] private WayPoint wayPoint = null;
+
+        private List<Enemy> _enemyList = null;
         
-        private string _enemyName = "Enemy";
-
-        private List<Enemy> _enemyList = new List<Enemy>();
-
-        private Coroutine _createRoutine = null;
-        
-        public void CreateEnemy(int wave)
+        public void Create(WaveData toWaveData)
         {
-            // wave에 따라 csv 에서 해당하는 에너미 생성하기
-
-            if(_createRoutine != null) StopCoroutine(_createRoutine);
-            _createRoutine = StartCoroutine(OnCreate(20));
-        }
-
-        private IEnumerator OnCreate(int count)
-        {
-            for (int i = 0; i < count; i++)
+            _enemyList = new List<Enemy>();
+            
+            for (int i = 0; i < toWaveData.CreateCount; i++)
             {
-                yield return new WaitForSeconds(CreateTime);
-                
-                Enemy enemy = Instantiate(GetPrefabs(_enemyName), transform);
-                
-                enemy.SetEnemy(wayPoint);
+                Enemy enemy = Instantiate(GetPrefabs(toWaveData.EnemyName), transform);
                 enemy.OnDestroyed += RemoveEnemy;
+                enemy.SetPos(WaitPos, WaitPos);
                 
                 _enemyList.Add(enemy);
-                
-                OnEnemyListChanged.Invoke(_enemyList);
+            }
+
+            StartCoroutine(OnSpawnDelay());
+        }
+
+        private void Spawn()
+        {
+            
+        }
+
+        private IEnumerator OnSpawnDelay()
+        {
+            foreach (var enemy in _enemyList)
+            {
+                yield return new WaitForSeconds(SpawnDelay);
+
+                enemy.SetEnemy(wayPoint);
             }
         }
-        
+
         private Enemy GetPrefabs(string prefabName)
         {
             return Resources.Load<Enemy>($"Enemy/{prefabName}");
@@ -53,6 +54,8 @@ namespace QuarterDefense.InGame
         private void RemoveEnemy(Enemy enemy)
         {
             _enemyList.Remove(enemy);
+            
+            Debug.Log($"{enemy.name} Dead...");
         }
     }
 }
