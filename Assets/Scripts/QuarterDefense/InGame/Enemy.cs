@@ -7,32 +7,26 @@ namespace QuarterDefense.InGame
 {
     public class Enemy : MonoBehaviour
     {
-        private const float MinDistance = 1.0f;
+        private const float MinDistance = 0.0f;
         
         public event Action<Enemy> OnDestroyed = delegate(Enemy enemy) {  };
         
         [SerializeField] private float speed = 5.0f;
         [SerializeField] private Transform spriteTransform = null;
-        [SerializeField] private GameObject selectedTag = null;
 
         private int _targetIndex = 0;
         private Transform[] _wayPoints = null;
 
         private Transform CurrentTransform => _wayPoints[_targetIndex];
 
-        public bool SetSelect { set => selectedTag.SetActive(value); }
-
-        public long GetTimestamp { get; private set; } = 0;
-
         public void SetEnemy(WayPoint wayPoint)
         {
-            _wayPoints = wayPoint.GetWayPoints;
-            transform.position = wayPoint.GetStartPoint.position;
-            GetTimestamp = Util.GetTimeStamp();
-            
             gameObject.SetActive(true);
-
-            StartCoroutine(Move());
+            
+            _wayPoints = wayPoint.GetWayPoints;
+            transform.position =_wayPoints[0].position;
+            
+            Move();
         }
 
 
@@ -45,14 +39,26 @@ namespace QuarterDefense.InGame
             float scale = (float)_hp / _maxHp;
             transform.localScale = new Vector3(scale, scale, scale);
 
-            if (_hp <= 0)
-            {
-                OnDestroyed.Invoke(this);
-                Destroy(gameObject);
-            }
+            if (_hp > 0) return;
+            
+            OnDestroyed.Invoke(this);
+            gameObject.SetActive(false);
+            //Destroy(gameObject);
+        }
+
+        public void SetPos(float x, float y)
+        {
+            transform.position = new Vector3(x, y, 0);
+
+            gameObject.SetActive(false);
+        }
+
+        public void Move()
+        {
+            StartCoroutine(OnMove());
         }
         
-        private IEnumerator Move()
+        private IEnumerator OnMove()
         {
             while (true)
             {
