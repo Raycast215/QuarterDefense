@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace QuarterDefense.InGame
@@ -10,7 +11,8 @@ namespace QuarterDefense.InGame
         private const float SpawnDelay = 1.0f;
         private const float WaitPos = 999.0f;
         
-        [SerializeField] private int maxEnemyCount = 200;
+        public event Action<int> OnEnemyCountChecked = delegate(int i) {  };
+        
         [SerializeField] private WayPoint wayPoint = null;
 
         private List<Enemy> _enemyList = null;
@@ -30,19 +32,16 @@ namespace QuarterDefense.InGame
 
             StartCoroutine(OnSpawnDelay());
         }
-
-        private void Spawn()
-        {
-            
-        }
-
+        
         private IEnumerator OnSpawnDelay()
         {
             foreach (var enemy in _enemyList)
             {
-                yield return new WaitForSeconds(SpawnDelay);
+                yield return new WaitForSeconds(SpawnDelay / Time.timeScale);
 
                 enemy.SetEnemy(wayPoint);
+                
+                OnEnemyCountChecked.Invoke(GetCurrentEnemyCount());
             }
         }
 
@@ -53,9 +52,18 @@ namespace QuarterDefense.InGame
 
         private void RemoveEnemy(Enemy enemy)
         {
-            _enemyList.Remove(enemy);
-            
             Debug.Log($"{enemy.name} Dead...");
+        }
+
+        /// <summary>
+        /// 현재 생존해있는 Enemy의 수를 반환하는 함수입니다.
+        /// </summary>
+        /// <returns></returns>
+        private int GetCurrentEnemyCount()
+        {
+            Enemy[] enemies = GetComponentsInChildren<Enemy>();
+            
+            return enemies.Select(x => x.gameObject.activeInHierarchy).Count();
         }
     }
 }
