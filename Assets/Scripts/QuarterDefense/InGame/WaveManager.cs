@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using QuarterDefense.InGame.UI;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace QuarterDefense.InGame
 {
@@ -13,7 +14,7 @@ namespace QuarterDefense.InGame
         [SerializeField] private WaveViewer waveViewer = null;
         [SerializeField] private WaveTimeViewer waveTimeViewer = null;
         [SerializeField] private EnemyCountViewer enemyCountViewer = null;
-        [SerializeField] private EnemyManager enemyManager = null;
+        [FormerlySerializedAs("enemyManager")] [SerializeField] private EnemySystem enemySystem = null;
 
         [SerializeField] private int maxEnemyCount = 256;
         
@@ -36,8 +37,8 @@ namespace QuarterDefense.InGame
 
         private void Subscribe()
         {
-            enemyManager.OnEnemyCountChecked += OnGameBroken;
-            enemyManager.OnEnemyCountChecked += enemyCountViewer.Set;
+            enemySystem.OnEnemyCountChecked += OnGameBroken;
+            enemySystem.OnEnemyCountChecked += enemyCountViewer.Set;
         }
         
         private void LoadWaveData(Action onComplete)
@@ -80,7 +81,7 @@ namespace QuarterDefense.InGame
                 waveTimeViewer.OnCompleted += () => _isStart = true;
                 waveViewer.Set(1);
                 
-                enemyManager.Create(_waveDataList[_curWave - 1]);
+                enemySystem.Create(_waveDataList[_curWave - 1]);
                 
                 _isStart = false;
             }
