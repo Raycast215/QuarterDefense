@@ -3,27 +3,22 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using QuarterDefense.InGame.Bullet;
+using QuarterDefense.InGame.Interface;
 using UnityEngine;
 
 namespace QuarterDefense.InGame.Player
 {
     public class Player : MonoBehaviour
     {
-        [SerializeField] private BulletController bulletController = null;
-
-        [SerializeField] private Animator animator = null;
+        [SerializeField] private Movement movement = null;
         
-        private List<Enemy> _enemyList = new List<Enemy>();
-
-        private Coroutine _coroutine = null;
-
-        [SerializeField]private Enemy preTarget = null;
+        private Enemy _target = null;
         
         private void Start()
         {
-            // StartCoroutine(Attack());
+            StartCoroutine(Attack());
         }
-
+       
 
         private IEnumerator Attack()
         {
@@ -31,34 +26,30 @@ namespace QuarterDefense.InGame.Player
             {
                 yield return new WaitForSeconds(2.0f);
                 
-                animator.Play("Player_Attack", 0, 0.0f);
+                _target = SearchNearEnemy();
+                
+                if (!_target) continue;
+                
+                //spriteRenderer.flipX = CheckDirection(_target);
+                
+                //_target.Damage(1);
+                
+                // animator.Play("Player_Attack", 0, 0.0f);
+                
+                
             }
         }
-        
-        
-        
-        
-        public void SetEnemyList(List<Enemy> enemyList)
+
+
+        private Enemy SearchNearEnemy()
         {
-            _enemyList = enemyList;
-
-            if(_coroutine != null) StopCoroutine(_coroutine);
-            _coroutine = StartCoroutine(OnAttack());
-        }
-
-        private IEnumerator OnAttack()
-        {
-            while (true)
-            {
-                yield return new WaitForSeconds(1.0f);
-                
-                var toList = _enemyList.OrderBy(
-                    x => Vector3.Distance(transform.position, x.transform.position)).ToList();
-
-                preTarget = toList[0];
-                
-                preTarget.Damage(1);
-            }
+            Collider[] colls = Physics.OverlapSphere(transform.position, 10.0f);
+            
+            _target = colls.OrderByDescending(x => Vector3.Distance(transform.position, x.transform.position) < 1.0f)
+                .FirstOrDefault()
+                ?.GetComponent<Enemy>();
+            
+            return _target;
         }
     }
 }
