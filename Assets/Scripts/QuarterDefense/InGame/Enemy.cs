@@ -30,15 +30,12 @@ namespace QuarterDefense.InGame
         }
 
 
-        private int _maxHp = 3;
-        private int _hp = 3;
+        private int _maxHp = 2;
+        private int _hp = 2;
         public void Damage(int damage)
         {
             _hp -= damage;
-
-            float scale = (float)_hp / _maxHp;
-            transform.localScale = new Vector3(scale, scale, scale);
-
+            
             if (_hp > 0) return;
             
             OnDestroyed.Invoke(this);

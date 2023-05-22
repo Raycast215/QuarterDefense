@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace QuarterDefense.InGame
 {
-    public class EnemyManager : MonoBehaviour
+    public class EnemySystem : MonoBehaviour
     {
         private const float SpawnDelay = 1.0f;
         private const float WaitPos = 999.0f;
