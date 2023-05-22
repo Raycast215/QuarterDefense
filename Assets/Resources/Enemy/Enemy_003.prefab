@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: e0cd4bae4d3ba9448ae4405c2c6a2ebf, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0.2208755, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -92,9 +92,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1122600860174444883}
   - component: {fileID: 1122600860174444884}
-  - component: {fileID: 3704881811165479174}
+  - component: {fileID: 7478304736356971098}
   m_Layer: 0
-  m_Name: Enemy_001
+  m_Name: Enemy_003
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -130,7 +130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   spriteTransform: {fileID: 1122600859532939634}
---- !u!135 &3704881811165479174
+--- !u!135 &7478304736356971098
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

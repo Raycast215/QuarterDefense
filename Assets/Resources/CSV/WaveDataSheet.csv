@@ -1,4 +1,4 @@
 Wave,Time,EnemyName,CreateCount
-1,30,Enemy_001,20
-2,30,Enemy_001,20
-3,30,Enemy_001,20
+1,30,Enemy_001,5
+2,30,Enemy_002,10
+3,30,Enemy_003,10
