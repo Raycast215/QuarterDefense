@@ -29,6 +29,7 @@ namespace QuarterDefense.InGame.Player
         {
             while (true)
             {
+                // 공격 가능한 상태일 때까지 대기.
                 yield return new WaitUntil(OnAttackStateChecked);
 
                 OnAttacked.Invoke();
