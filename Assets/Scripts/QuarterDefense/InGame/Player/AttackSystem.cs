@@ -8,20 +8,15 @@ namespace QuarterDefense.InGame.Player
     // 2023. 05. 24
     // Player의 공격 모듈.
     
-    public class AttackModule : MonoBehaviour
+    public class AttackSystem : MonoBehaviour
     {
         public event Action OnAttacked = delegate {  };
-        
-        private EnemySystem _enemySystem = null;
+        public Func<bool> OnAttackStateChecked = null;
 
         private float _delay = 0.0f;
         
         public void Set(float attackDelay = 0.0f)
         {
-            GameObject.Find("EnemySystem").TryGetComponent(out EnemySystem enySystem);
-
-            _enemySystem = enySystem;
-
             _delay = attackDelay;
         }
 
@@ -34,17 +29,12 @@ namespace QuarterDefense.InGame.Player
         {
             while (true)
             {
-                yield return new WaitUntil(CheckAttackState);
+                yield return new WaitUntil(OnAttackStateChecked);
 
                 OnAttacked.Invoke();
                 
                 yield return new WaitForSeconds(_delay);
             }
-        }
-        
-        private bool CheckAttackState()
-        {
-            return _enemySystem.GetEnemyCount() > 0;
         }
     }
 }
