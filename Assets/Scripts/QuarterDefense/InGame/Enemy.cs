@@ -14,10 +14,15 @@ namespace QuarterDefense.InGame
         [SerializeField] private float speed = 5.0f;
         [SerializeField] private Transform spriteTransform = null;
 
+        private bool _isActive = false;
+        
+        
         private int _targetIndex = 0;
         private Transform[] _wayPoints = null;
 
         private Transform CurrentTransform => _wayPoints[_targetIndex];
+
+        public bool Active => gameObject.activeInHierarchy && _hp > 0;
 
         public void SetEnemy(WayPoint wayPoint)
         {
@@ -76,7 +81,9 @@ namespace QuarterDefense.InGame
         /// </summary>
         private void RotateTowardsTarget(Transform target)
         {
-            float angle = Mathf.Atan2(GetDistanceToTarget(target).y, GetDistanceToTarget(target).x) * Mathf.Rad2Deg;
+            Vector3 targetPos = GetDistanceToTarget(target);
+
+            float angle = Mathf.Atan2(targetPos.y, targetPos.x) * Mathf.Rad2Deg;
             spriteTransform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
 

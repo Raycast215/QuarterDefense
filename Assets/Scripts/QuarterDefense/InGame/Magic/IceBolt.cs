@@ -16,6 +16,7 @@ namespace QuarterDefense.InGame.Magic
         {
             Move();
             RotateTowardsTarget(_targetEnemy.transform);
+            Attack();
         }
 
         public void SetEnemy(Enemy targetEnemy)
@@ -31,7 +32,19 @@ namespace QuarterDefense.InGame.Magic
             
            
         }
-        
+
+        private void Attack()
+        {
+            float dist = Vector3.Distance(transform.position, _targetEnemy.transform.position);
+
+            if (dist <= 0)
+            {
+                _targetEnemy.Damage((int)data.Damage);
+                Destroy(gameObject);
+            }
+
+        }
+
         private void RotateTowardsTarget(Transform target)
         {
             if(CheckTarget()) return;

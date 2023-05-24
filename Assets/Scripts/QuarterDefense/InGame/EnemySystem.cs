@@ -15,11 +15,11 @@ namespace QuarterDefense.InGame
         
         [SerializeField] private WayPoint wayPoint = null;
 
-        private List<Enemy> _enemyList = null;
-        
+        public List<Enemy> EnemyList { get; private set; } = null;
+
         public void Create(WaveData toWaveData)
         {
-            _enemyList = new List<Enemy>();
+            EnemyList = new List<Enemy>();
             
             for (int i = 0; i < toWaveData.CreateCount; i++)
             {
@@ -27,15 +27,24 @@ namespace QuarterDefense.InGame
                 enemy.OnDestroyed += RemoveEnemy;
                 enemy.SetPos(WaitPos, WaitPos);
                 
-                _enemyList.Add(enemy);
+                EnemyList.Add(enemy);
             }
 
             StartCoroutine(OnSpawnDelay());
         }
+
+        public int GetEnemyCount()
+        {
+            if (EnemyList == null) return 0;
+            
+            int count = EnemyList.Count(x => x.Active);
+
+            return count;
+        }
         
         private IEnumerator OnSpawnDelay()
         {
-            foreach (var enemy in _enemyList)
+            foreach (var enemy in EnemyList)
             {
                 yield return new WaitForSeconds(SpawnDelay / Time.timeScale);
 

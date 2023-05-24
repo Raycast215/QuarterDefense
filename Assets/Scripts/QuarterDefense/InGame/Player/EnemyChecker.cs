@@ -44,9 +44,9 @@ namespace QuarterDefense.InGame.Player
         {
             TargetEnemy = _enemySystem.EnemyList
                 .OrderByDescending(x => Util.GetDistance(curPos, x.transform.position) < _range)
-                .FirstOrDefault();
+                .FirstOrDefault(x => x.gameObject.activeInHierarchy);
             
-            OnEnemyChanged.Invoke(TargetEnemy);
+            if(TargetEnemy) OnEnemyChanged.Invoke(TargetEnemy);
         }
     }
 }
