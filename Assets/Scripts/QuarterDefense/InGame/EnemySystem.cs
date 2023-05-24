@@ -56,7 +56,7 @@ namespace QuarterDefense.InGame
 
         private Enemy GetPrefabs(string prefabName)
         {
-            return Resources.Load<Enemy>($"Enemy/{prefabName}");
+            return Resources.Load<Enemy>($"InGame/Enemy/{prefabName}");
         }
 
         private void RemoveEnemy(Enemy enemy)
