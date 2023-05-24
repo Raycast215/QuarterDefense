@@ -48,5 +48,16 @@ namespace QuarterDefense.Common
             
             return (long)timeSpan.TotalSeconds;
         }
+        
+        /// <summary>
+        /// from부터 to까지의 거리를 반환합니다.
+        /// </summary>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        /// <returns></returns>
+        public static float GetDistance(Vector3 from, Vector3 to)
+        {
+            return Vector3.Distance(from, to);
+        }
     }
 }

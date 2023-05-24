@@ -1,0 +1,15 @@
+using System;
+using QuarterDefense.InGame.Magic;
+
+namespace QuarterDefense.InGame.Player
+{
+    public class IcePlayer : Player
+    {
+        protected override void OnAttack(Enemy enemy)
+        {
+            IceBolt iceBolt = Instantiate(magicPrefab, magicLayer)?.GetComponent<IceBolt>();
+
+            if (iceBolt != null) iceBolt.SetEnemy(enemy);
+        }
+    }
+}

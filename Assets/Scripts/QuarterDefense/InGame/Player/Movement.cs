@@ -1,37 +1,57 @@
+using System;
 using System.Collections;
+using QuarterDefense.Common;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace QuarterDefense.InGame.Player
 {
     public class Movement : MonoBehaviour
     {
-        // [SerializeField] private float speed = 10.0f;
+        private const float BaseMoveSpeed = 10.0f;
+        
+        public event Action OnMoved = delegate {  };
+        
         [SerializeField] private SpriteRenderer spriteRenderer = null;
 
-        // public void MoveToTargetPos()
-        // {
-        //     StartCoroutine(OnMove());
-        // }
-
+        private float _moveSpeed = 10.0f;
+        private Vector3 _targetPos = Vector3.zero;
+        
+        public void Set(float moveSpeed = BaseMoveSpeed)
+        {
+            _moveSpeed = moveSpeed;
+        }
+        
         public void SetDirection(Vector3 targetPos)
         {
             float distance = transform.position.x - targetPos.x;
-            
+
             spriteRenderer.flipX = distance > 0;
         }
 
-        // private IEnumerator OnMove()
-        // {
-        //     Vector3 targetPos = GetRandomPos();
-        //     
-        //     while (Vector3.Distance(targetPos, transform.position) >= 0.1f)
-        //     {
-        //         transform.position = 
-        //             Vector3.MoveTowards(transform.position, GetRandomPos(), speed * Time.deltaTime);
-        //
-        //         yield return null;
-        //     }
-        // }
+        public void Move()
+        {
+            // StartCoroutine(OnMove());
+            
+            OnMoved.Invoke();
+        }
+        
+       
+
+        private IEnumerator OnMove()
+        {
+            Vector3 targetPos = GetRandomPos();
+            
+            while (Vector3.Distance(targetPos, transform.position) >= 0.1f)
+            {
+                transform.position = 
+                    Vector3.MoveTowards(transform.position, GetRandomPos(), _moveSpeed * Time.deltaTime);
+        
+                yield return null;
+            }
+            
+            OnMoved.Invoke();
+        }
 
         private Vector3 GetRandomPos()
         {

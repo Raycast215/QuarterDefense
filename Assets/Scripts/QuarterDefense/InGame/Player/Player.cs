@@ -1,55 +1,59 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using QuarterDefense.InGame.Bullet;
-using QuarterDefense.InGame.Interface;
 using UnityEngine;
 
 namespace QuarterDefense.InGame.Player
 {
-    public class Player : MonoBehaviour
+    public abstract class Player : MonoBehaviour
     {
-        [SerializeField] private Movement movement = null;
-        
-        private Enemy _target = null;
-        
-        private void Start()
-        {
-            StartCoroutine(Attack());
-        }
-       
+        [SerializeField] private Animator animator = null;
+        [SerializeField] protected Movement movement = null;
+        [SerializeField] protected AttackSystem attackSystem = null;
+        [SerializeField] protected EnemyChecker enemyChecker = null;
+        [SerializeField] protected Transform magicLayer = null;
+        [SerializeField] protected Magic.Magic magicPrefab = null;
 
-        private IEnumerator Attack()
+        private float _attackDelay = 1.0f; // SO 만든 후 데이터 불러오기.
+        private float _moveSpeed = 5.0f; // SO 만든 후 데이터 불러오기.
+        private float _range = 10.0f; // SO 만든 후 데이터 불러오기.
+
+        private bool _isActive = true;
+        
+        protected virtual IEnumerator Start()
         {
-            while (true)
-            {
-                yield return new WaitForSeconds(2.0f);
-                
-                _target = SearchNearEnemy();
-                
-                if (!_target) continue;
-                
-                //spriteRenderer.flipX = CheckDirection(_target);
-                
-                //_target.Damage(1);
-                
-                // animator.Play("Player_Attack", 0, 0.0f);
-                
-                
-            }
+            yield return new WaitForSeconds(3.0f); // 게임 준비 플래그로 바꾸기
+            yield return new WaitUntil(() => _isActive); // 게임 준비 플래그로 바꾸기
+            
+            Init();
         }
 
-
-        private Enemy SearchNearEnemy()
+        private void Init()
         {
-            Collider[] colls = Physics.OverlapSphere(transform.position, 10.0f);
+            InitData();
             
-            _target = colls.OrderByDescending(x => Vector3.Distance(transform.position, x.transform.position) < 1.0f)
-                .FirstOrDefault()
-                ?.GetComponent<Enemy>();
+            attackSystem.OnAttacked += OnPlayAttackSystemAni;
+            attackSystem.OnAttacked += () => OnAttack(enemyChecker.TargetEnemy);
+            attackSystem.OnAttackStateChecked = enemyChecker.CheckAttackState;
+            attackSystem.Set(_attackDelay);
             
-            return _target;
+            enemyChecker.OnEnemyChanged += enemy => movement.SetDirection(enemy.transform.position);
+            enemyChecker.Set(_range);
+            
+            movement.OnMoved += attackSystem.StartAttack;
+            movement.Set(_moveSpeed);
+            movement.Move();
+        }
+
+        private void InitData()
+        {
+            // SO 데이터 초기화.
+        }
+        
+        protected abstract void OnAttack(Enemy enemy);
+
+        private void OnPlayAttackSystemAni()
+        {
+            animator.Play("Player_Attack", 0, 0.0f);
         }
     }
 }
