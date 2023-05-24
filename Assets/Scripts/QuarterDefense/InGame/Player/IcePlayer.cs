@@ -7,9 +7,13 @@ namespace QuarterDefense.InGame.Player
     {
         protected override void OnAttack(Enemy enemy)
         {
-            IceBolt iceBolt = Instantiate(magicPrefab, magicLayer)?.GetComponent<IceBolt>();
-
-            if (iceBolt != null) iceBolt.SetEnemy(enemy);
+            IceBolt iceBolt = Instantiate(magicPrefab, transform)?.GetComponent<IceBolt>();
+            
+            if (iceBolt != null)
+            {
+                iceBolt.SetEnemy(enemy);
+                iceBolt.SetPos(transform.position);
+            }
         }
     }
 }

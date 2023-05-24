@@ -1,11 +1,12 @@
 using System;
-using System.Collections;
-using QuarterDefense.Common;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace QuarterDefense.InGame.Player
 {
+    // Scripted by Raycast
+    // 2023. 05. 24
+    // Player의 움직임을 실행하는 클래스.
+    
     public class Movement : MonoBehaviour
     {
         private const float BaseMoveSpeed = 10.0f;
@@ -14,8 +15,19 @@ namespace QuarterDefense.InGame.Player
         
         [SerializeField] private SpriteRenderer spriteRenderer = null;
 
-        private float _moveSpeed = 10.0f;
+        private bool _isStart = false;
+        private float _moveSpeed = 0.0f;
         private Vector3 _targetPos = Vector3.zero;
+        
+        private void Start()
+        {
+            _targetPos = GetRandomPos();
+        }
+
+        private void FixedUpdate()
+        {
+            OnMove();
+        }
         
         public void Set(float moveSpeed = BaseMoveSpeed)
         {
@@ -29,34 +41,30 @@ namespace QuarterDefense.InGame.Player
             spriteRenderer.flipX = distance > 0;
         }
 
-        public void Move()
+        private void OnMove()
         {
-            // StartCoroutine(OnMove());
-            
-            OnMoved.Invoke();
-        }
-        
-       
-
-        private IEnumerator OnMove()
-        {
-            Vector3 targetPos = GetRandomPos();
-            
-            while (Vector3.Distance(targetPos, transform.position) >= 0.1f)
+            if (!CheckMovable())
             {
-                transform.position = 
-                    Vector3.MoveTowards(transform.position, GetRandomPos(), _moveSpeed * Time.deltaTime);
-        
-                yield return null;
+                if (_isStart) return;
+                
+                OnMoved.Invoke();
+                _isStart = true;
+                
+                return;
             }
             
-            OnMoved.Invoke();
+            transform.position = Vector3.MoveTowards(transform.position, GetRandomPos(), _moveSpeed * Time.deltaTime);
+        }
+
+        private bool CheckMovable()
+        {
+            return Vector3.Distance(transform.position, _targetPos) >= 0.5f;
         }
 
         private Vector3 GetRandomPos()
         {
-            float randomX = Random.Range(2.0f, 3.0f);
-            float randomY = Random.Range(1.0f, 2.0f);
+            float randomX = UnityEngine.Random.Range(2.0f, 3.0f);
+            float randomY = UnityEngine.Random.Range(1.0f, 2.0f);
             
             return new Vector3(randomX, randomY, 0.0f);
         }

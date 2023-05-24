@@ -5,7 +5,7 @@ namespace QuarterDefense.InGame.Magic
 {
     public class IceBolt : Magic
     {
-        [SerializeField]private Enemy _targetEnemy;
+        [SerializeField] private Enemy _targetEnemy;
 
         private void Start()
         {
@@ -19,6 +19,11 @@ namespace QuarterDefense.InGame.Magic
             Attack();
         }
 
+        public void SetPos(Vector3 pos)
+        {
+            transform.position = pos;
+        }
+        
         public void SetEnemy(Enemy targetEnemy)
         {
             _targetEnemy = targetEnemy;
@@ -37,7 +42,7 @@ namespace QuarterDefense.InGame.Magic
         {
             float dist = Vector3.Distance(transform.position, _targetEnemy.transform.position);
 
-            if (dist <= 0)
+            if (dist <= 0.5f)
             {
                 _targetEnemy.Damage((int)data.Damage);
                 Destroy(gameObject);

@@ -6,7 +6,7 @@ namespace QuarterDefense.InGame.Player
 {
     // Scripted by Raycast
     // 2023. 05. 24
-    // Player의 공격 모듈.
+    // Player의 공격 클래스.
     
     public class AttackSystem : MonoBehaviour
     {

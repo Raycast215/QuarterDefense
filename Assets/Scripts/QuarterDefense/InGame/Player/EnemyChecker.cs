@@ -5,10 +5,12 @@ using UnityEngine;
 
 namespace QuarterDefense.InGame.Player
 {
+    // Scripted by Raycast
+    // 2023. 05. 24
+    // Enemy를 체크하는 클래스.
+    
     public class EnemyChecker : MonoBehaviour
     {
-        private const float BaseRange = 10.0f;
-     
         public event Action<Enemy> OnEnemyChanged = delegate(Enemy enemy) {  }; 
 
         public Enemy TargetEnemy { get; private set; }
@@ -16,8 +18,10 @@ namespace QuarterDefense.InGame.Player
         private EnemySystem _enemySystem = null;
         private float _range = 0.0f;
 
-        public void Set(float range = BaseRange)
+        public void Set(float range)
         {
+            TargetEnemy = null;
+            
             GameObject.Find("EnemySystem").TryGetComponent(out EnemySystem enySystem);
 
             _enemySystem = enySystem;
@@ -31,8 +35,8 @@ namespace QuarterDefense.InGame.Player
         /// <returns></returns>
         public bool CheckAttackState()
         {
-            FindNearEnemy(transform.position);
-            
+            FindNearEnemy(transform.localPosition);
+
             return _enemySystem.GetEnemyCount() > 0 && TargetEnemy;
         }
         
@@ -43,10 +47,10 @@ namespace QuarterDefense.InGame.Player
         private void FindNearEnemy(Vector3 curPos)
         {
             TargetEnemy = _enemySystem.EnemyList
-                .OrderByDescending(x => Util.GetDistance(curPos, x.transform.position) < _range)
+                .Where(x => Util.GetDistance(curPos, x.transform.localPosition) <= _range)
                 .FirstOrDefault(x => x.gameObject.activeInHierarchy);
             
-            if(TargetEnemy) OnEnemyChanged.Invoke(TargetEnemy);
+            if (TargetEnemy) OnEnemyChanged.Invoke(TargetEnemy);
         }
     }
 }
