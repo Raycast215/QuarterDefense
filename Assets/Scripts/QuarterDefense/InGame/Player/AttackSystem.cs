@@ -13,8 +13,8 @@ namespace QuarterDefense.InGame.Player
         public event Action OnAttacked = delegate {  };
         public Func<bool> OnAttackStateChecked = null;
 
-        private float _delay = 0.0f;
-        
+        private float _delay;
+
         /// <summary>
         /// Attack 후 딜레이를 지정합니다.
         /// </summary>

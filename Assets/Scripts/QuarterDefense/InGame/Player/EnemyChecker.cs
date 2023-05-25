@@ -11,12 +11,12 @@ namespace QuarterDefense.InGame.Player
     
     public class EnemyChecker : MonoBehaviour
     {
-        public event Action<Enemy> OnEnemyChanged = delegate(Enemy enemy) {  }; 
+        public event Action<Enemy> OnEnemyChanged = delegate {  }; 
 
         public Enemy TargetEnemy { get; private set; }
         
-        private EnemySystem _enemySystem = null;
-        private float _range = 0.0f;
+        private EnemySystem _enemySystem;
+        private float _range;
 
         private void Start()
         {
