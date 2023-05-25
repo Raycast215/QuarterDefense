@@ -11,11 +11,14 @@ namespace QuarterDefense.InGame
     {
         private const string CsvPath = "CSV/WaveDataSheet";
         
-        [SerializeField] private WaveViewer waveViewer = null;
-        [SerializeField] private WaveTimeViewer waveTimeViewer = null;
-        [SerializeField] private EnemyCountViewer enemyCountViewer = null;
-        [FormerlySerializedAs("enemyManager")] [SerializeField] private EnemySystem enemySystem = null;
+        [SerializeField] private WaveViewer waveViewer;
+        [SerializeField] private WaveTimeViewer waveTimeViewer;
+        [SerializeField] private EnemyCountViewer enemyCountViewer;
+        [SerializeField] private EnemySystem enemySystem;
 
+        [SerializeField] private PlayerSpawner playerSpawner;
+        [SerializeField] private CreatePopup createPopup;
+        
         [SerializeField] private int maxEnemyCount = 256;
         
         private bool _isStart = false;
@@ -39,6 +42,8 @@ namespace QuarterDefense.InGame
         {
             enemySystem.OnEnemyCountChecked += OnGameBroken;
             enemySystem.OnEnemyCountChecked += enemyCountViewer.Set;
+
+            playerSpawner.OnCharacterCreated += createPopup.ShowPopup;
         }
         
         private void LoadWaveData(Action onComplete)

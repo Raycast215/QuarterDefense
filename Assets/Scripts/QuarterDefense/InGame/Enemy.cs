@@ -35,8 +35,8 @@ namespace QuarterDefense.InGame
         }
 
 
-        private int _maxHp = 2;
-        private int _hp = 2;
+        private int _maxHp = 100;
+        [SerializeField]private int _hp = 100;
         public void Damage(int damage)
         {
             _hp -= damage;
