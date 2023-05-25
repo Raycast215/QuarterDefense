@@ -53,7 +53,8 @@ namespace QuarterDefense.InGame.Player
                 return;
             }
             
-            transform.position = Vector3.MoveTowards(transform.position, GetRandomPos(), _moveSpeed * Time.deltaTime);
+            SetDirection(_targetPos);
+            transform.position = Vector3.MoveTowards(transform.position, _targetPos, _moveSpeed * Time.deltaTime);
         }
 
         private bool CheckMovable()
@@ -63,10 +64,15 @@ namespace QuarterDefense.InGame.Player
 
         private Vector3 GetRandomPos()
         {
-            float randomX = UnityEngine.Random.Range(2.0f, 3.0f);
-            float randomY = UnityEngine.Random.Range(1.0f, 2.0f);
+            float randomX = UnityEngine.Random.Range(2.0f, 5.0f) * GetRandomDirection();
+            float randomY = UnityEngine.Random.Range(2.0f, 5.0f) * GetRandomDirection();
             
             return new Vector3(randomX, randomY, 0.0f);
+        }
+        
+        private float GetRandomDirection()
+        {
+            return UnityEngine.Random.Range(0, 2) > 0 ? 1 : -1;
         }
     }
 }
