@@ -14,7 +14,7 @@ namespace QuarterDefense.InGame.Player
         private const float MovableMinRange = 0.5f;
         private const float MoveSpeed = 5.0f;
         
-        public event Action OnMoved = delegate {  };
+        public event Action OnMoveFinished = delegate {  };
         
         [SerializeField] private SpriteRenderer spriteRenderer;
 
@@ -57,7 +57,7 @@ namespace QuarterDefense.InGame.Player
             {
                 if (_isStart) return;
                 
-                OnMoved.Invoke();
+                OnMoveFinished.Invoke();
                 _isStart = true;
                 
                 return;

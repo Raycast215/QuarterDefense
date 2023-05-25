@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,11 +12,12 @@ namespace QuarterDefense.InGame.Player
     {
         public Action OnPlayerInitialized = delegate {  };
         
-        [SerializeField] private Animator animator = null;
-        [SerializeField] protected Movement movement = null;
-        [SerializeField] protected AttackSystem attackSystem = null;
-        [SerializeField] protected EnemyChecker enemyChecker = null;
-        [SerializeField] protected Magic.Magic magicPrefab = null;
+        [SerializeField] private Animator animator;
+        [SerializeField] private SpriteRenderer spriteRenderer;
+        [SerializeField] protected Movement movement;
+        [SerializeField] protected AttackSystem attackSystem;
+        [SerializeField] protected EnemyChecker enemyChecker;
+        [SerializeField] protected Magic.Magic magicPrefab;
 
         protected List<Magic.Magic> _magicList = new List<Magic.Magic>();
 
@@ -45,8 +45,8 @@ namespace QuarterDefense.InGame.Player
             enemyChecker.OnEnemyChanged += enemy => movement.SetDirection(enemy.transform.position);
             enemyChecker.SetRange(_range);
             
-            movement.OnMoved += attackSystem.StartAttack;
-            movement.OnMoved += () => OnPlayAnimation("Idle");
+            movement.OnMoveFinished += attackSystem.StartAttack;
+            movement.OnMoveFinished += () => OnPlayAnimation("Idle");
             
             OnPlayerInitialized.Invoke();
         }

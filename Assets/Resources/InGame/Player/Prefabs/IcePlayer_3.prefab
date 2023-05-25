@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6436142880263063796}
   - component: {fileID: 6436142880263063801}
   m_Layer: 0
-  m_Name: IcePlayer
+  m_Name: IcePlayer_3
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: -7439040190048182823, guid: 0dc0f30d16a7b6c4e80134183722001b,
+  m_Sprite: {fileID: 8863232473996215911, guid: c0be7c816cbc2804cae497ef7fec537d,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -98,7 +98,7 @@ Animator:
   m_GameObject: {fileID: 6436142880263063792}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1d5d25eaf65556c438225a585f0b918e, type: 2}
+  m_Controller: {fileID: 22100000, guid: b2f4661530548f846ac331b88c89d9b9, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -120,6 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 6436142880263063797}
+  spriteRenderer: {fileID: 0}
   movement: {fileID: 6436142880263063799}
   attackSystem: {fileID: 6436142880263063796}
   enemyChecker: {fileID: 6436142880263063801}
