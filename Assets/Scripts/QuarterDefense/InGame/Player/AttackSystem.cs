@@ -15,16 +15,27 @@ namespace QuarterDefense.InGame.Player
 
         private float _delay = 0.0f;
         
+        /// <summary>
+        /// Attack 후 딜레이를 지정합니다.
+        /// </summary>
+        /// <param name="attackDelay"></param>
         public void Set(float attackDelay = 0.0f)
         {
             _delay = attackDelay;
         }
 
+        /// <summary>
+        /// Attack 코루틴을 실행합니다.
+        /// </summary>
         public void StartAttack()
         {
             StartCoroutine(OnAttack());
         }
 
+        /// <summary>
+        /// Attack 이벤트를 실행합니다.
+        /// </summary>
+        /// <returns></returns>
         private IEnumerator OnAttack()
         {
             while (true)

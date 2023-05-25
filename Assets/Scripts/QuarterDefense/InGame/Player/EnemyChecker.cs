@@ -7,7 +7,7 @@ namespace QuarterDefense.InGame.Player
 {
     // Scripted by Raycast
     // 2023. 05. 24
-    // Enemy를 체크하는 클래스.
+    // Enemy를 탐색 및 체크하는 클래스.
     
     public class EnemyChecker : MonoBehaviour
     {
@@ -18,14 +18,17 @@ namespace QuarterDefense.InGame.Player
         private EnemySystem _enemySystem = null;
         private float _range = 0.0f;
 
-        public void Set(float range)
+        private void Start()
         {
-            TargetEnemy = null;
-            
-            GameObject.Find("EnemySystem").TryGetComponent(out EnemySystem enySystem);
+            SetEnemySystem();
+        }
 
-            _enemySystem = enySystem;
-            
+        /// <summary>
+        /// Enemy를 탐색할 범위를 지정합니다.
+        /// </summary>
+        /// <param name="range"></param>
+        public void SetRange(float range)
+        {
             _range = range;
         }
 
@@ -38,6 +41,16 @@ namespace QuarterDefense.InGame.Player
             FindNearEnemy(transform.localPosition);
 
             return _enemySystem.GetEnemyCount() > 0 && TargetEnemy;
+        }
+        
+        /// <summary>
+        /// EnemySystem을 찾아 저장합니다.
+        /// </summary>
+        private void SetEnemySystem()
+        {
+            GameObject.Find("EnemySystem").TryGetComponent(out EnemySystem enemySystem);
+
+            _enemySystem = enemySystem;
         }
         
         /// <summary>

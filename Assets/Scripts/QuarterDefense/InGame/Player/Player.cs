@@ -5,57 +5,63 @@ using UnityEngine;
 
 namespace QuarterDefense.InGame.Player
 {
+    public enum PlayerType { Ice, Fire, Lightning }
+
+    public enum PlayerRank { Normal, Rare, Unique, Legendary }
+    
     public abstract class Player : MonoBehaviour
     {
+        public Action OnPlayerInitialized = delegate {  };
+        
         [SerializeField] private Animator animator = null;
         [SerializeField] protected Movement movement = null;
         [SerializeField] protected AttackSystem attackSystem = null;
         [SerializeField] protected EnemyChecker enemyChecker = null;
         [SerializeField] protected Magic.Magic magicPrefab = null;
 
-        protected List<Magic.Magic> magicList = new List<Magic.Magic>();
+        protected List<Magic.Magic> _magicList = new List<Magic.Magic>();
 
         private float _attackDelay = 1.0f; // SO 만든 후 데이터 불러오기.
         private float _moveSpeed = 5.0f; // SO 만든 후 데이터 불러오기.
         private float _range = 5.0f; // SO 만든 후 데이터 불러오기.
-
-        private bool _isActive = true;
         
-        private IEnumerator Start()
+        private void Start()
         {
-            yield return new WaitForSeconds(1.0f); // 게임 준비 플래그로 바꾸기
-            yield return new WaitUntil(() => _isActive); // 게임 준비 플래그로 바꾸기
-            
             Init();
         }
-        
-        protected abstract void OnAttack(Enemy enemy);
         
         private void Init()
         {
             InitData();
+            OnPlayAnimation("Walk");
             
-            attackSystem.OnAttacked += OnPlayAttackSystemAni;
+            OnPlayerInitialized += movement.Init;
+            
+            attackSystem.OnAttacked += () => OnPlayAnimation("Attack");
             attackSystem.OnAttacked += () => OnAttack(enemyChecker.TargetEnemy);
             attackSystem.OnAttackStateChecked = enemyChecker.CheckAttackState;
             attackSystem.Set(_attackDelay);
             
             enemyChecker.OnEnemyChanged += enemy => movement.SetDirection(enemy.transform.position);
-            enemyChecker.Set(_range);
+            enemyChecker.SetRange(_range);
             
             movement.OnMoved += attackSystem.StartAttack;
-            movement.Set(_moveSpeed);
+            movement.OnMoved += () => OnPlayAnimation("Idle");
+            
+            OnPlayerInitialized.Invoke();
         }
         
         private void InitData()
         {
             // SO 데이터 초기화.
         }
-        
-        private void OnPlayAttackSystemAni()
+
+        private void OnPlayAnimation(string clipName)
         {
-            animator.Play("Player_Attack", 0, 0.0f);
+            animator.Play($"Player_{clipName}", 0, 0.0f);
         }
+        
+        protected abstract void OnAttack(Enemy enemy);
     }
 }
 
