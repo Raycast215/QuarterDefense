@@ -12,8 +12,8 @@ namespace QuarterDefense.InGame.Player
     {
         public Action OnPlayerInitialized = delegate {  };
         
-        [SerializeField] private Animator animator;
         [SerializeField] private SpriteRenderer spriteRenderer;
+        [SerializeField] private AnimationPlayer aniPlayer;
         [SerializeField] protected Movement movement;
         [SerializeField] protected AttackSystem attackSystem;
         [SerializeField] protected EnemyChecker enemyChecker;
@@ -33,20 +33,19 @@ namespace QuarterDefense.InGame.Player
         private void Init()
         {
             InitData();
-            OnPlayAnimation("Walk");
-            
+
             OnPlayerInitialized += movement.Init;
             
-            attackSystem.OnAttacked += () => OnPlayAnimation("Attack");
+            attackSystem.Set(_attackDelay);
+            attackSystem.OnAttacked += () => aniPlayer.OnPlayAnimation(CharacterAniState.Attack);
             attackSystem.OnAttacked += () => OnAttack(enemyChecker.TargetEnemy);
             attackSystem.OnAttackStateChecked = enemyChecker.CheckAttackState;
-            attackSystem.Set(_attackDelay);
             
-            enemyChecker.OnEnemyChanged += enemy => movement.SetDirection(enemy.transform.position);
             enemyChecker.SetRange(_range);
+            enemyChecker.OnEnemyChanged += enemy => movement.SetDirection(enemy.transform.position);
             
             movement.OnMoveFinished += attackSystem.StartAttack;
-            movement.OnMoveFinished += () => OnPlayAnimation("Idle");
+            movement.OnMoveFinished += () => aniPlayer.OnPlayAnimation(CharacterAniState.Idle);
             
             OnPlayerInitialized.Invoke();
         }
@@ -56,12 +55,6 @@ namespace QuarterDefense.InGame.Player
             // SO 데이터 초기화.
         }
 
-        private void OnPlayAnimation(string clipName)
-        {
-            animator.Play($"Player_{clipName}", 0, 0.0f);
-        }
-        
         protected abstract void OnAttack(Enemy enemy);
     }
 }
-

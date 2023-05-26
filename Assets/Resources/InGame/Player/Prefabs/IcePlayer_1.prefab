@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6436142880263063799}
   - component: {fileID: 6436142880263063796}
   - component: {fileID: 6436142880263063801}
+  - component: {fileID: 8038799288370107139}
   m_Layer: 0
   m_Name: IcePlayer_1
   m_TagString: Player
@@ -119,8 +120,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22f4e738a4b14bf4f9be6f1a70d4eb2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 6436142880263063797}
-  spriteRenderer: {fileID: 0}
+  spriteRenderer: {fileID: 6436142880263063795}
+  aniPlayer: {fileID: 8038799288370107139}
   movement: {fileID: 6436142880263063799}
   attackSystem: {fileID: 6436142880263063796}
   enemyChecker: {fileID: 6436142880263063801}
@@ -163,3 +164,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8d473a2d8de5cc41bd79faab4213e58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8038799288370107139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6436142880263063792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a81b781497b3d44c9c846b12bb6d11d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 6436142880263063797}
