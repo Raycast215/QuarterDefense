@@ -12,10 +12,11 @@ GameObject:
   - component: {fileID: 6436142880263063795}
   - component: {fileID: 6436142880263063797}
   - component: {fileID: 6436142880263063798}
-  - component: {fileID: 6436142880263063799}
   - component: {fileID: 6436142880263063796}
   - component: {fileID: 6436142880263063801}
   - component: {fileID: 6362493189774759387}
+  - component: {fileID: 3877073339570732175}
+  - component: {fileID: 6665136396115780099}
   m_Layer: 0
   m_Name: IcePlayer_2
   m_TagString: Player
@@ -120,26 +121,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22f4e738a4b14bf4f9be6f1a70d4eb2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 6436142880263063795}
   aniPlayer: {fileID: 6362493189774759387}
-  movement: {fileID: 6436142880263063799}
+  movement: {fileID: 3877073339570732175}
+  spriteRotate: {fileID: 6665136396115780099}
   attackSystem: {fileID: 6436142880263063796}
   enemyChecker: {fileID: 6436142880263063801}
   magicPrefab: {fileID: 4285803632998534232, guid: 104a1002e30bdeb4cb793aae8117cef6,
     type: 3}
---- !u!114 &6436142880263063799
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6436142880263063792}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 764ea1e51305ab1478a0e3191ed5ea15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 6436142880263063795}
 --- !u!114 &6436142880263063796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,3 +165,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 6436142880263063797}
+--- !u!114 &3877073339570732175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6436142880263063792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95d18e867b71d2f4bbe6de9b363ce06a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6665136396115780099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6436142880263063792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a82a21dcbaef02145917f28c41d4ca07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 6436142880263063795}
