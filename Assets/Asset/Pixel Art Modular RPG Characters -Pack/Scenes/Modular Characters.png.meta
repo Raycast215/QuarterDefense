@@ -147,6 +147,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -213,6 +214,18 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -971,6 +984,42 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      Sprite-0001 - final-Sheet_0: 7159369515776466307
+      Sprite-0001 - final-Sheet_1: -1210848205854492760
+      Sprite-0001 - final-Sheet_10: 1367762318321798239
+      Sprite-0001 - final-Sheet_11: 7321028073293772378
+      Sprite-0001 - final-Sheet_12: 4298568118341253473
+      Sprite-0001 - final-Sheet_13: -6240395782475013380
+      Sprite-0001 - final-Sheet_14: -6155791186909777852
+      Sprite-0001 - final-Sheet_15: -3894356794530506391
+      Sprite-0001 - final-Sheet_16: 6925705927758358841
+      Sprite-0001 - final-Sheet_17: -2690218672532519152
+      Sprite-0001 - final-Sheet_18: 5093373291022802233
+      Sprite-0001 - final-Sheet_19: -5787529712934662010
+      Sprite-0001 - final-Sheet_2: 4015057172354014177
+      Sprite-0001 - final-Sheet_20: -7094141014812304626
+      Sprite-0001 - final-Sheet_21: -4086832779502704004
+      Sprite-0001 - final-Sheet_22: -2861413825991830676
+      Sprite-0001 - final-Sheet_23: -8154215679864456447
+      Sprite-0001 - final-Sheet_24: -6154741402986734369
+      Sprite-0001 - final-Sheet_25: -8087431750415054061
+      Sprite-0001 - final-Sheet_26: 7039652356994575842
+      Sprite-0001 - final-Sheet_27: -999814648616229276
+      Sprite-0001 - final-Sheet_28: -2368493253969682991
+      Sprite-0001 - final-Sheet_29: -6291990102693398559
+      Sprite-0001 - final-Sheet_3: -3455227374798061455
+      Sprite-0001 - final-Sheet_30: 8408812234715466652
+      Sprite-0001 - final-Sheet_31: 8929316666015564316
+      Sprite-0001 - final-Sheet_32: 3562731392145907893
+      Sprite-0001 - final-Sheet_33: -9037285760588933114
+      Sprite-0001 - final-Sheet_34: 8079882116060859649
+      Sprite-0001 - final-Sheet_4: -2594173814271391763
+      Sprite-0001 - final-Sheet_5: 1876164798537711731
+      Sprite-0001 - final-Sheet_6: -5003250443411433019
+      Sprite-0001 - final-Sheet_7: -1661698234912230706
+      Sprite-0001 - final-Sheet_8: 8849955488649186205
+      Sprite-0001 - final-Sheet_9: -7479810453752920043
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
