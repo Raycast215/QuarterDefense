@@ -129,6 +129,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -195,6 +196,18 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -953,6 +966,42 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      Player_0_0: -7439040190048182823
+      Player_0_1: 416999869675970898
+      Player_0_10: 2806514673670125294
+      Player_0_11: 1425501260072995677
+      Player_0_12: 1591086499057614588
+      Player_0_13: 6062945511041251638
+      Player_0_14: 2849538588637831384
+      Player_0_15: -4340230299766885261
+      Player_0_16: -4501591716611160388
+      Player_0_17: -5709900056987684638
+      Player_0_18: -912475697150609584
+      Player_0_19: 2602546965715334707
+      Player_0_2: -8573822307164892369
+      Player_0_20: 5954274933925324561
+      Player_0_21: 6437322396544355636
+      Player_0_22: -5731883501169538100
+      Player_0_23: 9041142339613579575
+      Player_0_24: -4047217651744574441
+      Player_0_25: 6978280716634776128
+      Player_0_26: -4977946161665467794
+      Player_0_27: 6628532724203671452
+      Player_0_28: -3591408708109047698
+      Player_0_29: 7043018503484351072
+      Player_0_3: 3709096674725039399
+      Player_0_30: 8845228477671987725
+      Player_0_31: -8882261130803348572
+      Player_0_32: 3233455285848113958
+      Player_0_33: -1170533873341693334
+      Player_0_34: -3607312592022201920
+      Player_0_4: 1420426562215607284
+      Player_0_5: -5870321579157609889
+      Player_0_6: 3683346785286133448
+      Player_0_7: 1915838008505189259
+      Player_0_8: -8759716863099689108
+      Player_0_9: 6784011674698636160
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

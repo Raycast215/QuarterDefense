@@ -1,0 +1,139 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5e6fedc2472449cead18ef23b5cb30d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Library:
+  - m_Name: Idle
+    m_Hash: 1008081451
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Player_2_6
+      m_Hash: 407600669
+      m_Sprite: {fileID: 5061995845350606943, guid: 74476d9308e2bdf47bc4bbfde7b8b91b,
+        type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 5061995845350606943, guid: 74476d9308e2bdf47bc4bbfde7b8b91b,
+        type: 3}
+    - m_Name: Player_2_7
+      m_Hash: 793529995
+      m_Sprite: {fileID: -1260086729990238182, guid: 74476d9308e2bdf47bc4bbfde7b8b91b,
+        type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1260086729990238182, guid: 74476d9308e2bdf47bc4bbfde7b8b91b,
+        type: 3}
+    - m_Name: Player_2_8
+      m_Hash: 1072911130
+      m_Sprite: {fileID: -1004807003667158957, guid: 74476d9308e2bdf47bc4bbfde7b8b91b,
+        type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1004807003667158957, guid: 74476d9308e2bdf47bc4bbfde7b8b91b,
+        type: 3}
+    - m_Name: Player_2_9
+      m_Hash: 150233996
+      m_Sprite: {fileID: 7455610462919627922, guid: 74476d9308e2bdf47bc4bbfde7b8b91b,
+        type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 7455610462919627922, guid: 74476d9308e2bdf47bc4bbfde7b8b91b,
+        type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 4
+  - m_Name: Walk
+    m_Hash: 765711723
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Player_2_0
+      m_Hash: 824761128
+      m_Sprite: {fileID: 5385673603564694379, guid: 74476d9308e2bdf47bc4bbfde7b8b91b,
+        type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 5385673603564694379, guid: 74476d9308e2bdf47bc4bbfde7b8b91b,
+        type: 3}
+    - m_Name: Player_2_1
+      m_Hash: 103803838
+      m_Sprite: {fileID: 306895117795750403, guid: 74476d9308e2bdf47bc4bbfde7b8b91b,
+        type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 306895117795750403, guid: 74476d9308e2bdf47bc4bbfde7b8b91b,
+        type: 3}
+    - m_Name: Player_2_2
+      m_Hash: 522631684
+      m_Sprite: {fileID: -4404700477443454641, guid: 74476d9308e2bdf47bc4bbfde7b8b91b,
+        type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -4404700477443454641, guid: 74476d9308e2bdf47bc4bbfde7b8b91b,
+        type: 3}
+    - m_Name: Player_2_3
+      m_Hash: 673286802
+      m_Sprite: {fileID: -5615109595051482306, guid: 74476d9308e2bdf47bc4bbfde7b8b91b,
+        type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -5615109595051482306, guid: 74476d9308e2bdf47bc4bbfde7b8b91b,
+        type: 3}
+    - m_Name: Player_2_4
+      m_Hash: 910499633
+      m_Sprite: {fileID: -7405262222741602085, guid: 74476d9308e2bdf47bc4bbfde7b8b91b,
+        type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -7405262222741602085, guid: 74476d9308e2bdf47bc4bbfde7b8b91b,
+        type: 3}
+    - m_Name: Player_2_5
+      m_Hash: 21114791
+      m_Sprite: {fileID: -7744652754427892823, guid: 74476d9308e2bdf47bc4bbfde7b8b91b,
+        type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -7744652754427892823, guid: 74476d9308e2bdf47bc4bbfde7b8b91b,
+        type: 3}
+    - m_Name: Player_2_0_0
+      m_Hash: 377435926
+      m_Sprite: {fileID: 5385673603564694379, guid: 74476d9308e2bdf47bc4bbfde7b8b91b,
+        type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 5385673603564694379, guid: 74476d9308e2bdf47bc4bbfde7b8b91b,
+        type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 7
+  - m_Name: Attack
+    m_Hash: 7088141
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Player_2_13
+      m_Hash: 26034171
+      m_Sprite: {fileID: -3637734251615794236, guid: 74476d9308e2bdf47bc4bbfde7b8b91b,
+        type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -3637734251615794236, guid: 74476d9308e2bdf47bc4bbfde7b8b91b,
+        type: 3}
+    - m_Name: Player_2_14
+      m_Hash: 535407192
+      m_Sprite: {fileID: -8427557144977068696, guid: 74476d9308e2bdf47bc4bbfde7b8b91b,
+        type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -8427557144977068696, guid: 74476d9308e2bdf47bc4bbfde7b8b91b,
+        type: 3}
+    - m_Name: Player_2_15
+      m_Hash: 686725838
+      m_Sprite: {fileID: -2184789279515933315, guid: 74476d9308e2bdf47bc4bbfde7b8b91b,
+        type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -2184789279515933315, guid: 74476d9308e2bdf47bc4bbfde7b8b91b,
+        type: 3}
+    - m_Name: Player_2_16
+      m_Hash: 837274484
+      m_Sprite: {fileID: -8617847438104071870, guid: 74476d9308e2bdf47bc4bbfde7b8b91b,
+        type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -8617847438104071870, guid: 74476d9308e2bdf47bc4bbfde7b8b91b,
+        type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 4
+  m_PrimaryLibraryGUID: 

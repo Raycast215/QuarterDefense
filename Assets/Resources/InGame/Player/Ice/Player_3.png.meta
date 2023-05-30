@@ -129,6 +129,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -195,6 +196,18 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -953,6 +966,42 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      Player_3_0: 8863232473996215911
+      Player_3_1: 6548761574545325289
+      Player_3_10: 7078124978740163248
+      Player_3_11: -1618451553692034496
+      Player_3_12: -8837441551278082022
+      Player_3_13: -1757101810199878126
+      Player_3_14: -4782466971929943075
+      Player_3_15: -7681192811294081644
+      Player_3_16: 4739236958946821978
+      Player_3_17: 1079110773277746463
+      Player_3_18: 6523139285669470779
+      Player_3_19: 8940375822757025773
+      Player_3_2: 4971378997067141213
+      Player_3_20: 2587407609334777789
+      Player_3_21: 4715309320716954048
+      Player_3_22: -5661957875790890409
+      Player_3_23: 4387027131719367324
+      Player_3_24: 5314497849993547620
+      Player_3_25: 764272463201450036
+      Player_3_26: 4647965064489255248
+      Player_3_27: 7626317705900827670
+      Player_3_28: -5861836708371450819
+      Player_3_29: -559072651895924903
+      Player_3_3: 4962671025840753279
+      Player_3_30: -2295054862054006641
+      Player_3_31: 7585310596395110157
+      Player_3_32: -3584566944283475549
+      Player_3_33: 5877503563864629145
+      Player_3_34: -8777742332387156848
+      Player_3_4: -7449564791711359350
+      Player_3_5: -3346245818191295482
+      Player_3_6: 7603995206095155152
+      Player_3_7: 8804378246374075789
+      Player_3_8: -4003228591297425593
+      Player_3_9: -6567002136647453748
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
