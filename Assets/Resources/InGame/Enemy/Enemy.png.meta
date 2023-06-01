@@ -129,6 +129,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -151,7 +152,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -195,6 +196,18 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -953,6 +966,42 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      Enemy_0: 8596640243658272642
+      Enemy_1: -7642239419928554605
+      Enemy_10: -7734248497391147085
+      Enemy_11: -8714037839689498976
+      Enemy_12: 7867557418624504665
+      Enemy_13: 3296816500878435913
+      Enemy_14: 5540866796086995345
+      Enemy_15: 7882272785022910062
+      Enemy_16: -3824095377679173771
+      Enemy_17: -3606938999716188695
+      Enemy_18: -6322652313883057565
+      Enemy_19: -6915605642361400022
+      Enemy_2: -3876759189950653258
+      Enemy_20: -7767654313103843454
+      Enemy_21: -1902865523280736888
+      Enemy_22: -3575372549568559383
+      Enemy_23: 9190401040988841920
+      Enemy_24: 2835644302679746783
+      Enemy_25: 4673373542974900038
+      Enemy_26: -955028360551415169
+      Enemy_27: 3825834745654634165
+      Enemy_28: 5682344071447026491
+      Enemy_29: 894830005799034562
+      Enemy_3: -5720429097031363069
+      Enemy_30: 159274010437077831
+      Enemy_31: 691323044159955749
+      Enemy_32: 4132268951892142594
+      Enemy_33: 5700257364922400560
+      Enemy_34: 6256094347580273993
+      Enemy_4: -7911572535675539837
+      Enemy_5: 5398807837072792716
+      Enemy_6: -3763824636803078212
+      Enemy_7: 8273598715916126338
+      Enemy_8: -8966301255875288918
+      Enemy_9: -7875468939738959075
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

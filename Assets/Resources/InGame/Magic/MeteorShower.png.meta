@@ -81,6 +81,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -147,6 +148,18 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -506,6 +519,23 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      MeteorShower_0: 7931435193416752984
+      MeteorShower_1: -3711610121247188013
+      MeteorShower_10: -3349017576223285959
+      MeteorShower_11: 6018005566270871340
+      MeteorShower_12: -2497367706159208230
+      MeteorShower_13: 1316969257863105486
+      MeteorShower_14: -3311076023334532436
+      MeteorShower_15: -1928004331256230820
+      MeteorShower_2: -8641139091385770244
+      MeteorShower_3: -1331739308723940730
+      MeteorShower_4: -4863641125959081380
+      MeteorShower_5: 1735347935098866145
+      MeteorShower_6: -4044015581730489203
+      MeteorShower_7: 2813893151916197512
+      MeteorShower_8: 1020837728623588589
+      MeteorShower_9: -4550212841056182156
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
