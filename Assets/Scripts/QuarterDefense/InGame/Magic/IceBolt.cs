@@ -1,4 +1,5 @@
 using System;
+using QuarterDefense.InGame.Character.Enemy;
 using UnityEngine;
 
 namespace QuarterDefense.InGame.Magic
@@ -31,7 +32,11 @@ namespace QuarterDefense.InGame.Magic
         
         protected override void Move()
         {
-            if(CheckTarget()) return;
+            if (CheckTarget())
+            {
+                Destroy(gameObject);
+                return;
+            }
             
             transform.position = Vector3.MoveTowards(transform.position, _targetEnemy.transform.position, data.Speed * Time.deltaTime);
             
@@ -44,7 +49,7 @@ namespace QuarterDefense.InGame.Magic
 
             if (dist <= 0.5f)
             {
-                _targetEnemy.Damage((int)data.Damage);
+                _targetEnemy.Damage(data.Damage);
                 Destroy(gameObject);
             }
 
@@ -56,11 +61,6 @@ namespace QuarterDefense.InGame.Magic
             
             float angle = Mathf.Atan2(GetDistanceToTarget(target).y, GetDistanceToTarget(target).x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        }
-
-        private void Destroy()
-        {
-            if(Vector3.Distance(_targetEnemy.transform.position, transform.position) <= 0.0f) gameObject.SetActive(false);
         }
         
         private Vector3 GetDistanceToTarget(Transform target)
