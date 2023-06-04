@@ -8,12 +8,14 @@ namespace QuarterDefense.InGame
         private const int StartGold = 40;
         private const int SpawnCost = 10;
         private const int Count = 1;
-        private const int GameBrokenEnemyCount = 10;
+        private const int GameBrokenEnemyCount = 100;
         
+        [Header("System")]
         [SerializeField] private WaveSystem waveSystem;
         [SerializeField] private EnemySystem enemySystem;
         [SerializeField] private PlayerSpawner playerSpawner;
 
+        [Header("Viewer")]
         [SerializeField] private GoldViewer goldViewer;
         [SerializeField] private EnemyCountViewer enemyCountViewer;
         [SerializeField] private WaveViewer waveViewer;
@@ -23,6 +25,7 @@ namespace QuarterDefense.InGame
         {
             goldViewer.Set(StartGold);
             
+            enemyCountViewer.SetMaxEnemyCount(GameBrokenEnemyCount);
             enemyCountViewer.Set();
 
             waveSystem.OnEnemyCreated += enemySystem.Create;

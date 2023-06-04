@@ -10,14 +10,27 @@ namespace QuarterDefense.InGame.UI.Viewer
     public class EnemyCountViewer : Viewer
     {
         [SerializeField] private Text enemyCountText;
+        [SerializeField] private Image gaugeBar;
 
         private int _enemyCount;
+        private int _maxEnemyCount;
+
+        public void SetMaxEnemyCount(int value) => _maxEnemyCount = value;
         
         public override void Set(int value = 0)
         {
             _enemyCount += value;
             
-            enemyCountText.text = $"{_enemyCount} / 256";
+            enemyCountText.text = $"{_enemyCount} / {_maxEnemyCount}";
+
+            SetGauge();
+        }
+
+        private void SetGauge()
+        {
+            float gauge = (float)_enemyCount / _maxEnemyCount;
+            
+            gaugeBar.fillAmount = gauge;
         }
     }
 }
