@@ -1,13 +1,12 @@
 using System;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace QuarterDefense.InGame.UI.Category
 {
     // Scripted by Raycast
     // 2023. 05. 31
-    // 카테고리 챕 기능 클래스.
+    // 카테고리 탭 기능 클래스.
     
     public class CategoryTab : MonoBehaviour
     {
