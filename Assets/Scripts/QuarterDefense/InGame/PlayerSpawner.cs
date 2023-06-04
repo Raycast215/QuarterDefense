@@ -15,7 +15,13 @@ namespace QuarterDefense.InGame
 
     public class PlayerSpawner : MonoBehaviour
     {
-        public event Action<CharacterData> OnCharacterCreated = delegate {  };
+        private const int MinNeedGold = 10;
+        
+        public Func<int> OnGetGoldChecked = null;
+
+        public event Action OnCreateSuccessed = delegate {  };
+        
+        //public event Action<CharacterData> OnCharacterCreated = delegate {  };
 
         private List<Player.Player> _playerList = new List<Player.Player>();
 
@@ -30,8 +36,11 @@ namespace QuarterDefense.InGame
 
         public void CreateCharacter()
         {
+            if(OnGetGoldChecked.Invoke() < MinNeedGold) return; 
+            
+            OnCreateSuccessed.Invoke();
+            
             Player.Player player = Instantiate(GetRandomPlayerPrefab(), transform);
-            player.OnPlayerInitialized.Invoke();
             
             _playerList.Add(player);
         }
@@ -54,7 +63,7 @@ namespace QuarterDefense.InGame
 
                 if (random > 0) continue;
                 
-                OnCharacterCreated.Invoke(data);
+                //OnCharacterCreated.Invoke(data);
                 return data.prefab;
             }
 

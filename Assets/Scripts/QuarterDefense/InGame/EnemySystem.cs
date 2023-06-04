@@ -2,35 +2,26 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using QuarterDefense.InGame.Character.Enemy;
 using UnityEngine;
 
 namespace QuarterDefense.InGame
 {
     public class EnemySystem : MonoBehaviour
     {
-        private const float SpawnDelay = 1.0f;
-        private const float WaitPos = 999.0f;
-        
-        public event Action<int> OnEnemyCountChecked = delegate(int i) {  };
-        
+        private const float SpawnDelay = 0.5f;
+
+        public event Action OnEnemyCreated = delegate {  };
+        public event Action OnEnemyDestroyed = delegate {  };
+        //public event Action<int> OnEnemyCountChecked = delegate {  };
+
         [SerializeField] private WayPoint wayPoint = null;
 
-        public List<Enemy> EnemyList { get; private set; } = null;
+        public List<Enemy> EnemyList { get; private set; } = new List<Enemy>();
 
         public void Create(WaveData toWaveData)
         {
-            EnemyList = new List<Enemy>();
-            
-            for (int i = 0; i < toWaveData.CreateCount; i++)
-            {
-                Enemy enemy = Instantiate(GetPrefabs(toWaveData.EnemyName), transform);
-                enemy.OnDestroyed += RemoveEnemy;
-                enemy.SetPos(WaitPos, WaitPos);
-                
-                EnemyList.Add(enemy);
-            }
-
-            StartCoroutine(OnSpawnDelay());
+            StartCoroutine(OnSpawnDelay(toWaveData));
         }
 
         public int GetEnemyCount()
@@ -42,15 +33,23 @@ namespace QuarterDefense.InGame
             return count;
         }
         
-        private IEnumerator OnSpawnDelay()
+        private IEnumerator OnSpawnDelay(WaveData toWaveData)
         {
-            foreach (var enemy in EnemyList)
+            for (int i = 0; i < toWaveData.CreateCount; i++)
             {
-                yield return new WaitForSeconds(SpawnDelay / Time.timeScale);
-
+                yield return new WaitForSeconds(SpawnDelay);
+                
+                Enemy enemy = Instantiate(GetPrefabs(toWaveData.EnemyID), transform);
+                
+                enemy.OnDestroyed += RemoveEnemy;
+                // enemy.OnDestroyed += _ => OnEnemyCountChecked.Invoke(GetEnemyCount());
+                
                 enemy.SetEnemy(wayPoint);
                 
-                OnEnemyCountChecked.Invoke(GetCurrentEnemyCount());
+                EnemyList.Add(enemy);
+                
+                OnEnemyCreated.Invoke();
+                //OnEnemyCountChecked.Invoke(GetEnemyCount());
             }
         }
 
@@ -61,18 +60,7 @@ namespace QuarterDefense.InGame
 
         private void RemoveEnemy(Enemy enemy)
         {
-            Debug.Log($"{enemy.name} Dead...");
-        }
-
-        /// <summary>
-        /// 현재 생존해있는 Enemy의 수를 반환하는 함수입니다.
-        /// </summary>
-        /// <returns></returns>
-        private int GetCurrentEnemyCount()
-        {
-            Enemy[] enemies = GetComponentsInChildren<Enemy>();
-            
-            return enemies.Select(x => x.gameObject.activeInHierarchy).Count();
+            OnEnemyDestroyed.Invoke();
         }
     }
 }
