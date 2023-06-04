@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace QuarterDefense.InGame.UI
+namespace QuarterDefense.InGame.UI.Viewer
 {
     public class WaveTimeViewer : MonoBehaviour
     {
@@ -11,13 +11,13 @@ namespace QuarterDefense.InGame.UI
         
         public event Action OnCompleted = delegate {  }; 
         
-        [SerializeField] private Text waveTimeText = null;
+        [SerializeField] private Text waveTimeText;
 
-        private float _curTime = 0.0f;
+        private float _curTime;
 
-        private Coroutine _waveTimeRoutine = null;
+        private Coroutine _waveTimeRoutine;
         
-        public void Set(float toWaveTime)
+        public void StartTimer(float toWaveTime)
         {
             if(_waveTimeRoutine != null) StopCoroutine(_waveTimeRoutine);
             _waveTimeRoutine = StartCoroutine(OnTimer(toWaveTime));

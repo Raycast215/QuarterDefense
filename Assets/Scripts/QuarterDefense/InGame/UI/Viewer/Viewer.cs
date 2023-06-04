@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace QuarterDefense.InGame.UI
+namespace QuarterDefense.InGame.UI.Viewer
 {
     // Scripted by Raycast
     // 2023. 05. 09
@@ -8,6 +8,6 @@ namespace QuarterDefense.InGame.UI
     
     public abstract class Viewer : MonoBehaviour
     {
-        public abstract void Set(int delta);
+        public abstract void Set(int value = 0);
     }
 }

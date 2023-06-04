@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace QuarterDefense.InGame.UI
+namespace QuarterDefense.InGame.UI.Viewer
 {
     // Scripted by Raycast
     // 2023. 05. 09
@@ -9,17 +9,15 @@ namespace QuarterDefense.InGame.UI
     
     public class WaveViewer : Viewer
     {
-        [SerializeField] private Text waveText = null;
-
-        private int _wave = 0;
+        [SerializeField] private Text waveText;
         
-        public override void Set(int delta)
+        private int _wave;
+        
+        public override void Set(int value = 0)
         {
-            _wave += delta;
+            _wave += value;
             
             waveText.text = $"Wave {_wave}";
-            
-            Debug.Log($"Start {_wave} Wave...!");
         }
     }
 }
