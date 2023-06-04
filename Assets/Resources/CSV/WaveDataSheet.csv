@@ -1,4 +1,4 @@
-Wave,Time,EnemyName,CreateCount
-1,30,Enemy_001,5
-2,30,Enemy_002,10
-3,30,Enemy_003,10
+Wave,Time,ID,CreateCount,Hp,Tag
+1,30,Enemy_001,20,10,
+2,90,Enemy_001,1,10000,Boss
+3,30,Enemy_001,20,10,
