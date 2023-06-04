@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using QuarterDefense.Common;
+using QuarterDefense.InGame.Character.Enemy;
 using UnityEngine;
 
 namespace QuarterDefense.InGame.Player

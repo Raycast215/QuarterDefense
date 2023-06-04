@@ -1,6 +1,9 @@
 using System;
 using System.Collections.Generic;
+using QuarterDefense.InGame.Character;
+using QuarterDefense.InGame.Character.Enemy;
 using UnityEngine;
+using UnityEngine.U2D.Animation;
 
 namespace QuarterDefense.InGame.Player
 {
@@ -10,11 +13,10 @@ namespace QuarterDefense.InGame.Player
     
     public abstract class Player : MonoBehaviour
     {
-        public Action OnPlayerInitialized = delegate {  };
-        
-        [SerializeField] private SpriteRenderer spriteRenderer;
         [SerializeField] private AnimationPlayer aniPlayer;
         [SerializeField] protected Movement movement;
+        [SerializeField] private SpriteRotate spriteRotate;
+        
         [SerializeField] protected AttackSystem attackSystem;
         [SerializeField] protected EnemyChecker enemyChecker;
         [SerializeField] protected Magic.Magic magicPrefab;
@@ -33,8 +35,6 @@ namespace QuarterDefense.InGame.Player
         private void Init()
         {
             InitData();
-
-            OnPlayerInitialized += movement.Init;
             
             attackSystem.Set(_attackDelay);
             attackSystem.OnAttacked += () => aniPlayer.OnPlayAnimation(CharacterAniState.Attack);
@@ -42,12 +42,11 @@ namespace QuarterDefense.InGame.Player
             attackSystem.OnAttackStateChecked = enemyChecker.CheckAttackState;
             
             enemyChecker.SetRange(_range);
-            enemyChecker.OnEnemyChanged += enemy => movement.SetDirection(enemy.transform.position);
+            enemyChecker.OnEnemyChanged += enemy => spriteRotate.SetDirection(enemy.transform.position);
             
+            movement.OnDirectionChanged += spriteRotate.SetDirection;
             movement.OnMoveFinished += attackSystem.StartAttack;
             movement.OnMoveFinished += () => aniPlayer.OnPlayAnimation(CharacterAniState.Idle);
-            
-            OnPlayerInitialized.Invoke();
         }
         
         private void InitData()

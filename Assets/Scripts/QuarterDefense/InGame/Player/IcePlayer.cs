@@ -1,4 +1,5 @@
 using System;
+using QuarterDefense.InGame.Character.Enemy;
 using QuarterDefense.InGame.Magic;
 
 namespace QuarterDefense.InGame.Player
