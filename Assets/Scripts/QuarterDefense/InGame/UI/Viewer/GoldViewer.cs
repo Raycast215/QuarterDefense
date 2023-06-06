@@ -7,17 +7,13 @@ namespace QuarterDefense.InGame.UI.Viewer
     // 2023. 05. 09
     // Gold를 UI에 표시하는 클래스입니다.
     
-    public class GoldViewer : Viewer
+    public class GoldViewer : MonoBehaviour
     {
         [SerializeField] private Text goldText;
-
-        public int Gold { get; private set; } = 0;
         
-        public override void Set(int value = 0)
+        public void SetText(int toGold)
         {
-            Gold += value;
-
-            goldText.text = $"{Gold}";
+            goldText.text = $"{toGold}";
         }
     }
 }

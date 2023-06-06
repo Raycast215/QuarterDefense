@@ -16,6 +16,7 @@ namespace QuarterDefense.InGame
         [SerializeField] private EnemySystem enemySystem;
         [SerializeField] private PlayerSpawner playerSpawner;
         [SerializeField] private UpgradeManager upgradeManager;
+        [SerializeField] private Gold gold;
         
         [Header("Viewer")]
         [SerializeField] private GoldViewer goldViewer;
@@ -25,7 +26,10 @@ namespace QuarterDefense.InGame
         
         private void Start()
         {
-            goldViewer.Set(StartGold);
+            goldViewer.SetText(StartGold);
+
+            gold.Amount = StartGold;
+            gold.OnGoldChanged += goldViewer.SetText;
             
             enemyCountViewer.SetMaxEnemyCount(GameBrokenEnemyCount);
             enemyCountViewer.Set();
@@ -37,14 +41,9 @@ namespace QuarterDefense.InGame
             enemySystem.OnEnemyCreated += () => enemyCountViewer.Set(Count);
             enemySystem.OnEnemyCreated += () => GameBroken(enemySystem.GetEnemyCount());
             enemySystem.OnEnemyDestroyed += () => enemyCountViewer.Set(-Count);
-            enemySystem.OnEnemyDestroyed += () => goldViewer.Set(SpawnCost);
+            enemySystem.OnEnemyDestroyed += () => gold.Amount = SpawnCost;
             
-            playerSpawner.OnGetGoldChecked += () => goldViewer.Gold;
-            playerSpawner.OnCreateSuccessed += () => goldViewer.Set(-SpawnCost);
-            
-            upgradeManager.OnGoldAmountChecked += () => goldViewer.Gold;
-            upgradeManager.OnGoldChanged += cost => goldViewer.Set(-cost);
-            upgradeManager.Init();
+            playerSpawner.OnCreateSuccessed += () => gold.Amount = -SpawnCost;
         }
 
         private void GameBroken(int curEnemyCount)

@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,20 +5,18 @@ namespace QuarterDefense.InGame.Upgrade
 {
     public abstract class BaseUpgrade : MonoBehaviour
     {
-        public Func<int> OnGoldAmountChecked = null; 
-        public Action<int> OnGoldChanged = delegate {  };
-        
+        [SerializeField] private Gold gold;
         [SerializeField] protected int startCost;
         [SerializeField] private Text costText;
         protected int Cost { get; set; }
         
         private void Start() => Init();
 
-        public virtual void TryUpgrade()
+        public virtual void OnUpgrade()
         {
-            if(OnGoldAmountChecked() < Cost) return;
-            
-            OnGoldChanged.Invoke(Cost);
+            if(gold.Amount < Cost) return;
+
+            gold.Amount = -Cost;
 
             Upgrade();
         }
