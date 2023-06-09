@@ -46,6 +46,18 @@ namespace QuarterDefense.InGame.Pool
                 break;
             }
         }
+
+        /// <summary>
+        /// 받아온 Rank가 일치하고, object가 활성화된 Character를 반환합니다.
+        /// </summary>
+        /// <param name="rank"></param>
+        /// <returns></returns>
+        public Player.Character GetCharacter(CharacterRank rank)
+        {
+            return _characterPoolList
+                .Where(x => rank.Equals(x.CharacterRank))
+                .FirstOrDefault(x => x.gameObject.activeInHierarchy);
+        }
         
         /// <summary>
         /// ObjectPool List에서 초과된 Object 수 만큼 삭제합니다. 
