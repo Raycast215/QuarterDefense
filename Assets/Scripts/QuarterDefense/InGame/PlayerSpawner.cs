@@ -7,7 +7,7 @@ namespace QuarterDefense.InGame
 {
     [Serializable] public class CharacterData
     {
-        public PlayerRank rank;
+        public CharacterRank rank;
         public string characterName;
         public Player.Player prefab;
         public int weight;
@@ -25,6 +25,34 @@ namespace QuarterDefense.InGame
         [SerializeField] private CharacterData[] characterData;
 
         private int _maxWeight;
+
+
+
+
+
+
+
+
+
+
+        public void SpawnCharacter()
+        {
+            
+        }
+
+        public void CharacterRankUp(CharacterRank rank)
+        {
+            
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         private void Start()
         {
@@ -64,18 +92,6 @@ namespace QuarterDefense.InGame
             }
 
             return null;
-        }
-
-        private void SpawnCharacter(PlayerRank rank)
-        {
-            Player.Player player = Instantiate(GetRandomPlayerPrefab(), transform);
-        }
-
-        private void UpgradeCharacter(PlayerRank rank)
-        {
-            if(rank.Equals(PlayerRank.Normal)) return;
-            
-            
         }
     }
 }

@@ -7,9 +7,9 @@ using UnityEngine.U2D.Animation;
 
 namespace QuarterDefense.InGame.Player
 {
-    public enum PlayerType { Ice, Fire, Lightning }
+    public enum CharacterType { Ice, Fire, Lightning }
 
-    public enum PlayerRank { Normal, Rare, Unique, Legendary }
+    public enum CharacterRank { Normal, Rare, Unique, Legendary }
     
     public abstract class Player : MonoBehaviour
     {
