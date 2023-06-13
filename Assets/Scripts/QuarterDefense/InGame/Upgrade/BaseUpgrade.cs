@@ -8,7 +8,7 @@ namespace QuarterDefense.InGame.Upgrade
         [SerializeField] private Gold gold;
         [SerializeField] protected int startCost;
         [SerializeField] private Text costText;
-        protected int Cost { get; set; }
+        public int Cost { get; set; }
         
         private void Start() => Init();
 
