@@ -1,5 +1,5 @@
+using QuarterDefense.Common;
 using QuarterDefense.InGame.UI.Viewer;
-using QuarterDefense.InGame.Upgrade;
 using UnityEngine;
 
 namespace QuarterDefense.InGame

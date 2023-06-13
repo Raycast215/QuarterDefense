@@ -1,4 +1,4 @@
-namespace QuarterDefense.InGame
+namespace QuarterDefense.Common
 {
     // Scripted by Raycast
     // 2023. 06. 11
