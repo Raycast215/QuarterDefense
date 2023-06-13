@@ -11,14 +11,12 @@ GameObject:
   - component: {fileID: 6436142880263063794}
   - component: {fileID: 6436142880263063795}
   - component: {fileID: 6436142880263063797}
-  - component: {fileID: 6436142880263063798}
-  - component: {fileID: 6436142880263063796}
-  - component: {fileID: 6436142880263063801}
   - component: {fileID: 8439655342035751467}
   - component: {fileID: 8727945172584920916}
   - component: {fileID: 4974908537855203134}
   - component: {fileID: 6227056352589662345}
   - component: {fileID: 2586736942746008250}
+  - component: {fileID: 8681663122614194295}
   m_Layer: 0
   m_Name: IcePlayer
   m_TagString: Player
@@ -115,49 +113,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &6436142880263063798
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6436142880263063792}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22f4e738a4b14bf4f9be6f1a70d4eb2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  aniPlayer: {fileID: 8439655342035751467}
-  movement: {fileID: 8727945172584920916}
-  spriteRotate: {fileID: 4974908537855203134}
-  attackSystem: {fileID: 6436142880263063796}
-  enemyChecker: {fileID: 6436142880263063801}
-  magicPrefab: {fileID: 4285803632998534232, guid: 104a1002e30bdeb4cb793aae8117cef6,
-    type: 3}
---- !u!114 &6436142880263063796
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6436142880263063792}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40ef70540dfd9b44c88923b780616572, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &6436142880263063801
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6436142880263063792}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8d473a2d8de5cc41bd79faab4213e58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &8439655342035751467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,3 +181,19 @@ MonoBehaviour:
   m_CategoryHash: 0
   m_labelHash: 0
   m_SpriteKey: 2.6484702e-21
+--- !u!114 &8681663122614194295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6436142880263063792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb2f8a62cc11b644a8c4b2e709d0d12f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aniPlayer: {fileID: 8439655342035751467}
+  movement: {fileID: 8727945172584920916}
+  spriteRotate: {fileID: 4974908537855203134}
+  spriteLibrary: {fileID: 6227056352589662345}
