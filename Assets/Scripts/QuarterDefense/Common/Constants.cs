@@ -8,5 +8,6 @@ namespace QuarterDefense.Common
     {
         public const int SpawnCost = 10;
         public const int RankUpCharacterCount = 10;
+        public const int MaxEnemyCount = 256;
     }
 }

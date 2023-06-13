@@ -8,8 +8,7 @@ namespace QuarterDefense.InGame
     {
         private const int StartGold = 4000000;
         private const int Count = 1;
-        private const int GameBrokenEnemyCount = 100;
-        
+
         [Header("System")]
         [SerializeField] private WaveSystem waveSystem;
         [SerializeField] private EnemySystem enemySystem;
@@ -28,7 +27,7 @@ namespace QuarterDefense.InGame
             gold.Amount = StartGold;
             gold.OnGoldViewerChanged += goldViewer.SetText;
             
-            enemyCountViewer.SetMaxEnemyCount(GameBrokenEnemyCount);
+            enemyCountViewer.SetMaxEnemyCount(Constants.MaxEnemyCount);
             enemyCountViewer.Set();
 
             waveSystem.OnEnemyCreated += enemySystem.Create;
@@ -43,7 +42,7 @@ namespace QuarterDefense.InGame
 
         private void GameBroken(int curEnemyCount)
         {
-            if(curEnemyCount < GameBrokenEnemyCount) return;
+            if(curEnemyCount < Constants.MaxEnemyCount) return;
 
             Time.timeScale = 0;
         }
