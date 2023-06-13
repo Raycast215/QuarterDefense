@@ -6,7 +6,7 @@ namespace QuarterDefense.InGame
     
     public class Gold : MonoBehaviour
     {
-        public event GoldChangeDelegate OnGoldChanged = delegate {  };
+        public event GoldChangeDelegate OnGoldViewerChanged = delegate {  };
 
         private int _gold;
         
@@ -16,7 +16,7 @@ namespace QuarterDefense.InGame
             set
             {
                 _gold += value;
-                OnGoldChanged.Invoke(_gold);
+                OnGoldViewerChanged.Invoke(_gold);
             }
         }
     }
