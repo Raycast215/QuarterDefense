@@ -13,8 +13,6 @@ namespace QuarterDefense.InGame
         [Header("System")]
         [SerializeField] private WaveSystem waveSystem;
         [SerializeField] private EnemySystem enemySystem;
-       // [SerializeField] private PlayerSpawner playerSpawner;
-        [SerializeField] private UpgradeManager upgradeManager;
         [SerializeField] private Gold gold;
         
         [Header("Viewer")]
@@ -41,8 +39,6 @@ namespace QuarterDefense.InGame
             enemySystem.OnEnemyCreated += () => GameBroken(enemySystem.GetEnemyCount());
             enemySystem.OnEnemyDestroyed += () => enemyCountViewer.Set(-Count);
             enemySystem.OnEnemyDestroyed += () => gold.Amount = Constants.SpawnCost;
-            
-           // playerSpawner.OnCreateSucceeded += () => gold.Amount = -Constants.SpawnCost;
         }
 
         private void GameBroken(int curEnemyCount)
