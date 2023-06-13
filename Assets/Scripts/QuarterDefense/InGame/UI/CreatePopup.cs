@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.U2D.Animation;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,7 +22,7 @@ namespace QuarterDefense.InGame.UI
         {
             gameObject.SetActive(true);
             
-            getText.text = $"[{data.rank.ToString().ToUpper()}] {data.characterName} 소환!";
+           // getText.text = $"[{data.rank.ToString().ToUpper()}] {data.characterName} 소환!";
 
             if (!gameObject.activeInHierarchy) animator.Play("Show", BgLayer, 0.0f);
             animator.Play("Get", TextLayer, 0.0f);
