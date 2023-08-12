@@ -7,7 +7,6 @@ namespace QuarterDefense.InGame
     public class InGameManager : MonoBehaviour
     {
         private const int StartGold = 4000000;
-        private const int Count = 1;
 
         [Header("System")]
         [SerializeField] private WaveSystem waveSystem;
@@ -31,12 +30,12 @@ namespace QuarterDefense.InGame
             enemyCountViewer.Set();
 
             waveSystem.OnEnemyCreated += enemySystem.Create;
-            waveSystem.OnEnemyCountIncreased += () => waveViewer.Set(Count);
+            waveSystem.OnEnemyCountIncreased += () => waveViewer.Set(1);
             waveSystem.OnTimerStarted += waveTimeViewer.StartTimer;
             
-            enemySystem.OnEnemyCreated += () => enemyCountViewer.Set(Count);
+            enemySystem.OnEnemyCreated += () => enemyCountViewer.Set(1);
             enemySystem.OnEnemyCreated += () => GameBroken(enemySystem.GetEnemyCount());
-            enemySystem.OnEnemyDestroyed += () => enemyCountViewer.Set(-Count);
+            enemySystem.OnEnemyDestroyed += () => enemyCountViewer.Set(-1);
             enemySystem.OnEnemyDestroyed += () => gold.Amount = Constants.SpawnCost;
         }
 
