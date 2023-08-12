@@ -9,18 +9,31 @@ namespace QuarterDefense.InGame.Pool
     // 2023. 06. 12
     // Object Pool Base 클래스입니다.
     
-    public abstract class Pooling<T> : MonoBehaviour, IDisposable where T : Component
+    public class Pooling<T> : IDisposable where T : Component
     {
-        [SerializeField] private T prefab;
-        [SerializeField] private int capacity;
+        private readonly T _prefab;
+        private readonly int _capacity;
+        private readonly Transform _layer;
         
         private Queue<T> _queue;
 
         private bool InstanceExist => _queue != null && _queue.Any();
 
-        private void Awake()
+        public Pooling(T prefab, int capacity, Transform layer)
         {
-            Pool();
+            _prefab = prefab;
+            _capacity = capacity;
+            _layer = layer;
+        }
+        
+        public void Pool()
+        {
+            _queue = new Queue<T>();
+
+            for (int i = 0; i < _capacity; i++)
+            {
+                Return(Create());
+            }
         }
 
         public T Get()
@@ -28,9 +41,7 @@ namespace QuarterDefense.InGame.Pool
             T instance = InstanceExist
                 ? _queue.Dequeue()
                 : Create();
-            
-            instance.gameObject.SetActive(true);
-            
+
             return instance;
         }
 
@@ -39,32 +50,26 @@ namespace QuarterDefense.InGame.Pool
             toTarget.gameObject.SetActive(false);
 
             _queue.Enqueue(toTarget);
+
+            Debug.Log($"Character Pool Return... {toTarget.transform.GetSiblingIndex()} / {toTarget.name}");
         }
 
         public void Dispose()
         {
             while (InstanceExist)
             {
-                Destroy(_queue.Dequeue());
+                UnityEngine.Object.Destroy(_queue.Dequeue());
             }
             
             _queue.Clear();
         }
-
-        private void Pool()
-        {
-            _queue = new Queue<T>();
-
-            for (int i = 0; i < capacity; i++)
-            {
-                Return(Create());
-            }
-        }
         
         private T Create()
         {
-            T createObject = Instantiate(prefab, transform);
+            T createObject = UnityEngine.Object.Instantiate(_prefab, _layer);
 
+            createObject.name = _prefab.name + _queue.Count;
+            
             return createObject;
         }
     }
