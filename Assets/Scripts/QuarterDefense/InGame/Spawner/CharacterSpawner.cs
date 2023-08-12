@@ -61,6 +61,9 @@ namespace QuarterDefense.InGame.Spawner
 
         private void Start() => SetMaxWeight();
         
+        /// <summary>
+        /// 골드를 소모하여 랜덤 등급의 캐릭터를 지정합니다.
+        /// </summary>
         public void RandomSpawn()
         {
             if(gold.Amount < Constants.SpawnCost) return;
@@ -72,19 +75,31 @@ namespace QuarterDefense.InGame.Spawner
             gold.Amount = -Constants.SpawnCost;
         }
 
+        /// <summary>
+        /// Rare 등급으로 업그레이드합니다.
+        /// </summary>
+        /// <param name="toUpgrade"></param>
         public void UpgradeRankToRare(BaseUpgrade toUpgrade)
         {
-            UpgradeRank(toUpgrade.Cost, Player.Character.CharacterRank.Rare);
+            CheckRankUp(toUpgrade.Cost, Player.Character.CharacterRank.Rare);
         }
         
+        /// <summary>
+        /// Unique 둥급으로 업그레이드 합니다.
+        /// </summary>
+        /// <param name="toUpgrade"></param>
         public void UpgradeRankToUnique(BaseUpgrade toUpgrade)
         {
-            UpgradeRank(toUpgrade.Cost, Player.Character.CharacterRank.Unique);
+            CheckRankUp(toUpgrade.Cost, Player.Character.CharacterRank.Unique);
         }
 
+        /// <summary>
+        /// Legendary 등급으로 업그레이드 합니다.
+        /// </summary>
+        /// <param name="toUpgrade"></param>
         public void UpgradeRankToLegendary(BaseUpgrade toUpgrade)
         {
-            UpgradeRank(toUpgrade.Cost, Player.Character.CharacterRank.Legendary);
+            CheckRankUp(toUpgrade.Cost, Player.Character.CharacterRank.Legendary);
         }
 
         /// <summary>
@@ -151,11 +166,11 @@ namespace QuarterDefense.InGame.Spawner
         }
         
         /// <summary>
-        /// 
+        /// 랭크 업그레이드가 가능한지 체크합니다.
         /// </summary>
         /// <param name="toCost"></param>
         /// <param name="toRank"></param>
-        private void UpgradeRank(int toCost, Player.Character.CharacterRank toRank)
+        private void CheckRankUp(int toCost, Player.Character.CharacterRank toRank)
         {
             void Complete()
             {

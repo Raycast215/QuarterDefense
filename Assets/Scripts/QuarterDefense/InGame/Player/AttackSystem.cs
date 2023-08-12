@@ -8,7 +8,7 @@ namespace QuarterDefense.InGame.Player
 {
     // Scripted by Raycast
     // 2023. 05. 24
-    // Player의 공격 클래스.
+    // 캐릭터의 공격 클래스.
     
     public class AttackSystem : MonoBehaviour
     {
@@ -33,6 +33,12 @@ namespace QuarterDefense.InGame.Player
             _delay = attackDelay;
         }
 
+        /// <summary>
+        /// 풀링된 오브젝트를 가져옵니다.
+        /// </summary>
+        /// <param name="rank"></param>
+        /// <param name="pos"></param>
+        /// <param name="enemy"></param>
         public void GetProjectile(Character.CharacterRank rank, Vector3 pos, Enemy enemy)
         {
             _projectilePool.GetProjectile(rank, pos, enemy);
@@ -46,6 +52,9 @@ namespace QuarterDefense.InGame.Player
             StartCoroutine(OnAttack());
         }
 
+        /// <summary>
+        /// 풀링할 오브젝트를 저장합니다.
+        /// </summary>
         private void SetProjectile()
         {
             GameObject.Find("ProjectilePool").TryGetComponent(out ProjectilePool projectilePool);

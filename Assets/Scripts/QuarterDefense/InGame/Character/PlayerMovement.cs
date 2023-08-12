@@ -10,6 +10,7 @@ namespace QuarterDefense.InGame.Character
     {
         private const float MinRange = 2.0f;
         private const float MaxRange = 5.0f;
+        private const int MaxDirectionRange = 2;
         
         private bool _isStart;
         
@@ -17,10 +18,7 @@ namespace QuarterDefense.InGame.Character
         {
             _targetPos = GetRandomPos();
         }
-
-        /// <summary>
-        /// 이동에 대한 로직을 실행합니다.
-        /// </summary>
+        
         protected override void Move()
         {
             if (!CheckMovable())
@@ -39,7 +37,7 @@ namespace QuarterDefense.InGame.Character
         }
         
         /// <summary>
-        /// 랜덤으로 위치 값을 반환.
+        /// 랜덤으로 위치 값을 반환합니다.
         /// </summary>
         /// <returns></returns>
         private Vector3 GetRandomPos()
@@ -51,12 +49,12 @@ namespace QuarterDefense.InGame.Character
         }
         
         /// <summary>
-        /// 랜덤으로 좌 또는 우 값을 반환.
+        /// 랜덤으로 좌 또는 우 값을 반환합니다.
         /// </summary>
         /// <returns></returns>
         private float GetRandomDirection()
         {
-            return Random.Range(0, 2) > 0 ? 1.0f : -1.0f;
+            return Random.Range(0, MaxDirectionRange) > 0 ? 1.0f : -1.0f;
         }
     }
 }

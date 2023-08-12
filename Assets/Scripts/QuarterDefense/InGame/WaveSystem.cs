@@ -6,6 +6,10 @@ using UnityEngine;
 
 namespace QuarterDefense.InGame
 {
+    // Scripted by Raycast
+    // 2023. 06. 12
+    // 웨이브 데이터를 담은 클래스입니다.
+    
     public class WaveData
     {
         public int Wave;
@@ -15,6 +19,10 @@ namespace QuarterDefense.InGame
         public float Hp;
         public string Tag;
     }
+    
+    // Scripted by Raycast
+    // 2023. 06. 12
+    // 웨이브를 실행하는 로직을 담은 클래스입니다.
     
     public class WaveSystem : MonoBehaviour
     {
@@ -42,6 +50,10 @@ namespace QuarterDefense.InGame
             LoadWaveData(OnComplete);
         }
 
+        /// <summary>
+        /// 웨이브 정보를 로드합니다.
+        /// </summary>
+        /// <param name="onComplete"></param>
         private void LoadWaveData(Action onComplete)
         {
             var toList = CSVReader.Read(CsvPath);
@@ -72,6 +84,10 @@ namespace QuarterDefense.InGame
             onComplete.Invoke();
         }
 
+        /// <summary>
+        /// 웨이브를 실행합니다.
+        /// </summary>
+        /// <returns></returns>
         private IEnumerator StartWave()
         {
             while (true)
