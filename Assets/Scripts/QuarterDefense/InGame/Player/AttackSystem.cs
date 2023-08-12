@@ -1,5 +1,7 @@
 using System;
 using System.Collections;
+using QuarterDefense.InGame.Character.Enemy;
+using QuarterDefense.InGame.Pool;
 using UnityEngine;
 
 namespace QuarterDefense.InGame.Player
@@ -11,10 +13,17 @@ namespace QuarterDefense.InGame.Player
     public class AttackSystem : MonoBehaviour
     {
         public event Action OnAttacked = delegate {  };
-        public Func<bool> OnAttackStateChecked = null;
+        public Func<bool> OnAttackStateChecked = () => false;
 
+        private ProjectilePool _projectilePool;
+        
         private float _delay;
 
+        private void Start()
+        {
+            SetProjectile();
+        }
+        
         /// <summary>
         /// Attack 후 딜레이를 지정합니다.
         /// </summary>
@@ -22,6 +31,11 @@ namespace QuarterDefense.InGame.Player
         public void Set(float attackDelay = 0.0f)
         {
             _delay = attackDelay;
+        }
+
+        public void GetProjectile(Character.CharacterRank rank, Vector3 pos, Enemy enemy)
+        {
+            _projectilePool.GetProjectile(rank, pos, enemy);
         }
 
         /// <summary>
@@ -32,6 +46,13 @@ namespace QuarterDefense.InGame.Player
             StartCoroutine(OnAttack());
         }
 
+        private void SetProjectile()
+        {
+            GameObject.Find("ProjectilePool").TryGetComponent(out ProjectilePool projectilePool);
+
+            _projectilePool = projectilePool;
+        }
+        
         /// <summary>
         /// Attack 이벤트를 실행합니다.
         /// </summary>
