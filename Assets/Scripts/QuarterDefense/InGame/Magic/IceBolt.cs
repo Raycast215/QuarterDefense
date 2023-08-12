@@ -6,7 +6,7 @@ namespace QuarterDefense.InGame.Magic
 {
     public class IceBolt : Magic
     {
-        [SerializeField] private Enemy _targetEnemy;
+        private Enemy _targetEnemy;
 
         private void Start()
         {
@@ -24,6 +24,21 @@ namespace QuarterDefense.InGame.Magic
         {
             transform.position = pos;
         }
+
+        public void SetScale(Player.Character.CharacterRank rank)
+        {
+            float scale = 0;
+            
+            switch (rank)
+            {
+                case Player.Character.CharacterRank.Normal : scale = 0.3f; break;
+                case Player.Character.CharacterRank.Rare : scale = 0.5f; break;
+                case Player.Character.CharacterRank.Unique : scale = 0.7f; break;
+                case Player.Character.CharacterRank.Legendary : scale = 1.2f; break;
+            }
+
+            transform.localScale = new Vector3(scale, scale, 0);
+        }
         
         public void SetEnemy(Enemy targetEnemy)
         {
@@ -38,9 +53,10 @@ namespace QuarterDefense.InGame.Magic
                 return;
             }
             
-            transform.position = Vector3.MoveTowards(transform.position, _targetEnemy.transform.position, data.Speed * Time.deltaTime);
-            
-           
+            transform.position = Vector3.MoveTowards(
+                transform.position, 
+                _targetEnemy.transform.position, 
+                data.Speed * Time.deltaTime);
         }
 
         private void Attack()
@@ -52,7 +68,6 @@ namespace QuarterDefense.InGame.Magic
                 _targetEnemy.Damage(data.Damage);
                 Destroy(gameObject);
             }
-
         }
 
         private void RotateTowardsTarget(Transform target)
